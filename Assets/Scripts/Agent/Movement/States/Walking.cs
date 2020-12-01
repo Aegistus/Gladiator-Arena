@@ -2,26 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Idling : StandingState
+public class Walking : StandingState
 {
-
-    public Idling(GameObject gameObject) : base(gameObject)
+    public Walking(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Walking), AtWalkingSpeed, Not(AtRunningSpeed)));
+        transitionsTo.Add(new Transition(typeof(Idling), Not(AtWalkingSpeed)));
     }
 
     public override void AfterExecution()
     {
-        
+
     }
 
     public override void BeforeExecution()
     {
-        Debug.Log("Idling");
+        Debug.Log("Walking");
     }
 
     public override void DuringExecution()
     {
-
+        
     }
 }
