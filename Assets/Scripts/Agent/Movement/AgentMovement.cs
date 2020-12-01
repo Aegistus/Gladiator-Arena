@@ -8,7 +8,7 @@ public class AgentMovement : MonoBehaviour
     public Vector3 CurrentVelocity { get { return rb.velocity; } }
 
     public float walkSpeed = 1f;
-    public float runSpeed = 5f;
+    public float runSpeed = 2f;
 
     private StateMachine movementStateMachine;
     private Rigidbody rb;
