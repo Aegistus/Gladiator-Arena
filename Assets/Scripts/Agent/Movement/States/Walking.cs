@@ -6,7 +6,7 @@ public class Walking : StandingState
 {
     public Walking(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Idling), Not(AtWalkingSpeed)));
+        transitionsTo.Add(new Transition(typeof(Idling), Not(AboveWalkingSpeed)));
     }
 
     public override void AfterExecution()

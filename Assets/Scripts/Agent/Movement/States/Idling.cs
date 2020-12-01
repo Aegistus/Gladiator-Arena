@@ -7,7 +7,7 @@ public class Idling : StandingState
 
     public Idling(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Walking), AtWalkingSpeed, Not(AtRunningSpeed)));
+        transitionsTo.Add(new Transition(typeof(Walking), AboveWalkingSpeed, Not(StandingStill)));
     }
 
     public override void AfterExecution()
