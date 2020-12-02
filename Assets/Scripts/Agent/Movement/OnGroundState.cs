@@ -8,6 +8,7 @@ public abstract class OnGroundState : MovementState
 
     protected OnGroundState(GameObject gameObject) : base(gameObject)
     {
+
     }
 
     protected void KeepGrounded()

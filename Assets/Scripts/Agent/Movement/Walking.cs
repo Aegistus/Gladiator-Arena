@@ -9,9 +9,9 @@ public class Walking : OnGroundState
     public Walking(GameObject gameObject) : base(gameObject)
     {
         animationNames.Add("Run");
-        transitionsTo.Add(new Transition(typeof(Idling), Not(MoveKeys)));
-        transitionsTo.Add(new Transition(typeof(Sprinting), Shift));
-        transitionsTo.Add(new Transition(typeof(Jumping), Spacebar, OnGround));
+        transitionsTo.Add(new Transition(typeof(Idling), Not(Move)));
+        transitionsTo.Add(new Transition(typeof(Sprinting), Run));
+        transitionsTo.Add(new Transition(typeof(Jumping), Jump, OnGround));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
     }
 
@@ -31,19 +31,19 @@ public class Walking : OnGroundState
         if (movement.Velocity.magnitude < moveSpeed)
         {
             newVelocity = Vector3.zero;
-            if (Input.GetKey(KeyCode.W))
+            if (controller.Forwards)
             {
                 newVelocity += movement.lookDirection.forward;
             }
-            if (Input.GetKey(KeyCode.S))
+            if (controller.Backwards)
             {
                 newVelocity += -movement.lookDirection.forward;
             }
-            if (Input.GetKey(KeyCode.A))
+            if (controller.Left)
             {
                 newVelocity += -movement.lookDirection.right;
             }
-            if (Input.GetKey(KeyCode.D))
+            if (controller.Right)
             {
                 newVelocity += movement.lookDirection.right;
             }

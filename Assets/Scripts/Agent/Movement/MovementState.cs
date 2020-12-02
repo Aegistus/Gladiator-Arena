@@ -7,17 +7,18 @@ public abstract class MovementState : State
 {
     protected LayerMask groundLayer;
     protected MovementController movement;
+    protected Controller controller;
     protected Rigidbody rb;
     protected List<string> animationNames = new List<string>();
     protected List<string> soundNames = new List<string>();
     //protected Animator anim;
 
-    public Func<bool> MoveKeys => () => Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S);
-    public Func<bool> Spacebar => () => Input.GetKeyDown(KeyCode.Space);
-    public Func<bool> LeftClick => () => Input.GetMouseButtonDown(0);
+    public Func<bool> Move => () => controller.Forwards || controller.Backwards || controller.Right || controller.Left;
+    public Func<bool> Jump => () => controller.Jump;
+    public Func<bool> PrimaryAction => () => Input.GetMouseButtonDown(0);
     //public Func<bool> RightClick => () => Input.GetMouseButton(1);
-    public Func<bool> Shift => () => Input.GetKey(KeyCode.LeftShift);
-    public Func<bool> Ctrl => () => Input.GetKey(KeyCode.LeftControl);
+    public Func<bool> Run => () => controller.Run;
+    public Func<bool> Crouch => () => controller.Crouch;
     public Func<bool> OnGround => () => IsGrounded();
     public Func<bool> NextToWall => () => IsNextToWall();
     public Func<bool> Rising => () => rb.velocity.y > 0;
@@ -26,6 +27,7 @@ public abstract class MovementState : State
     public MovementState(GameObject gameObject) : base(gameObject)
     {
         movement = gameObject.GetComponent<MovementController>();
+        controller = gameObject.GetComponent<Controller>();
         //anim = gameObject.GetComponentInChildren<Animator>();
         groundLayer = gameObject.GetComponent<MovementController>().groundLayer;
         rb = gameObject.GetComponent<Rigidbody>();

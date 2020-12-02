@@ -9,9 +9,9 @@ public class Sprinting : OnGroundState
     public Sprinting(GameObject gameObject) : base(gameObject)
     {
         animationNames.Add("Run");
-        transitionsTo.Add(new Transition(typeof(Walking), Not(Shift)));
-        transitionsTo.Add(new Transition(typeof(Idling), Not(MoveKeys), Not(Shift)));
-        transitionsTo.Add(new Transition(typeof(Jumping), Spacebar, OnGround));
+        transitionsTo.Add(new Transition(typeof(Walking), Not(Run)));
+        transitionsTo.Add(new Transition(typeof(Idling), Not(Move), Not(Run)));
+        transitionsTo.Add(new Transition(typeof(Jumping), Jump, OnGround));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
     }
 
@@ -29,7 +29,7 @@ public class Sprinting : OnGroundState
     public override void DuringExecution()
     {
         newVelocity = Vector3.zero;
-        if (Input.GetKey(KeyCode.W))
+        if (controller.Forwards)
         {
             newVelocity += movement.lookDirection.forward;
         }
