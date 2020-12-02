@@ -17,7 +17,10 @@ public class Walking : OnGroundState
 
     public override void AfterExecution()
     {
-
+        if (movement.Velocity.y > 0)
+        {
+            movement.SetVerticalVelocity(0);
+        }
     }
 
     public override void BeforeExecution()
