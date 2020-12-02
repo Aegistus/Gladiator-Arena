@@ -7,7 +7,7 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     public LayerMask groundLayer;
-    public ParticleSystem slideParticles;
+    public Transform lookDirection;
 
     public MovementState CurrentState => (MovementState)stateMachine.CurrentState;
     public Vector3 Velocity => rb.velocity;
@@ -31,9 +31,14 @@ public class MovementController : MonoBehaviour
         stateMachine.SetStates(states, typeof(Idling));
     }
 
-    public void SetVelocity(Vector3 velocity)
+    public void SetHorizontalVelocity(Vector3 velocity)
     {
         rb.velocity = new Vector3(velocity.x * velocityMod, rb.velocity.y, velocity.z * velocityMod);
+    }
+
+    public void SetVerticalVelocity(float vertVelocity)
+    {
+        rb.velocity = new Vector3(rb.velocity.x, vertVelocity, rb.velocity.z);
     }
 
     public void AddVelocity(Vector3 additional)

@@ -22,7 +22,7 @@ public class Walking : MovementState
 
     public override void BeforeExecution()
     {
-        movement.SetVelocity(Vector3.zero);
+        movement.SetHorizontalVelocity(Vector3.zero);
     }
 
     Vector3 newVelocity;
@@ -33,22 +33,22 @@ public class Walking : MovementState
             newVelocity = Vector3.zero;
             if (Input.GetKey(KeyCode.W))
             {
-                newVelocity += transform.forward;
+                newVelocity += movement.lookDirection.forward;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                newVelocity += -transform.forward;
+                newVelocity += -movement.lookDirection.forward;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                newVelocity += -transform.right;
+                newVelocity += -movement.lookDirection.right;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                newVelocity += transform.right;
+                newVelocity += movement.lookDirection.right;
             }
             newVelocity = newVelocity.normalized;
-            movement.SetVelocity(newVelocity * moveSpeed);
+            movement.SetHorizontalVelocity(newVelocity * moveSpeed);
         }
         KeepGrounded();
     }

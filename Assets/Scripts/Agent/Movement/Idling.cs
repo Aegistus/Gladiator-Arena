@@ -26,8 +26,10 @@ public class Idling : MovementState
         //anim.Play(animationNames[0]);
         if (movement.Velocity.magnitude < 10)
         {
-            movement.SetVelocity(Vector3.zero);
+            movement.SetHorizontalVelocity(Vector3.zero);
         }
+        movement.SetVerticalVelocity(0);
+        KeepGrounded();
         //if (OnGround())
         //{
         //    rb.velocity = Vector3.zero;
@@ -44,7 +46,7 @@ public class Idling : MovementState
     {
         if (Physics.Raycast(transform.position, Vector3.down, out rayHit, 1.5f, groundLayer))
         {
-            transform.position = rayHit.point + Vector3.up;
+            transform.position = rayHit.point + Vector3.up * .5f;
         }
     }
 }

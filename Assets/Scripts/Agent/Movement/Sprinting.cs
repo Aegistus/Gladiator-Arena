@@ -31,10 +31,10 @@ public class Sprinting : MovementState
         newVelocity = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
         {
-            newVelocity += transform.forward;
+            newVelocity += movement.lookDirection.forward;
         }
         newVelocity = newVelocity.normalized;
-        movement.SetVelocity(newVelocity * moveSpeed);
+        movement.SetHorizontalVelocity(newVelocity * moveSpeed);
         KeepGrounded();
     }
 

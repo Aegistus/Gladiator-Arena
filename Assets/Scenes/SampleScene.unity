@@ -1695,7 +1695,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  slideParticles: {fileID: 0}
+  lookDirection: {fileID: 1598378855}
 --- !u!54 &949285141
 Rigidbody:
   m_ObjectHideFlags: 0
