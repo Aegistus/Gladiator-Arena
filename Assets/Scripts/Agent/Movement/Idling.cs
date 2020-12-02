@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Idling : MovementState
+public class Idling : OnGroundState
 {
 
     public Idling(GameObject gameObject) : base(gameObject)
@@ -39,14 +39,5 @@ public class Idling : MovementState
     public override void DuringExecution()
     {
 
-    }
-
-    RaycastHit rayHit;
-    private void KeepGrounded()
-    {
-        if (Physics.Raycast(transform.position, Vector3.down, out rayHit, 1.5f, groundLayer))
-        {
-            transform.position = rayHit.point + Vector3.up * .5f;
-        }
     }
 }

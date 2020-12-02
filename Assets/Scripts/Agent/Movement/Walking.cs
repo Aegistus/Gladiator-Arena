@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Walking : MovementState
+public class Walking : OnGroundState
 {
     private float moveSpeed = 7.5f;
 
@@ -53,12 +53,4 @@ public class Walking : MovementState
         KeepGrounded();
     }
 
-    RaycastHit rayHit;
-    private void KeepGrounded()
-    {
-        if (Physics.Raycast(transform.position, Vector3.down, out rayHit, 1.5f, groundLayer))
-        {
-            transform.position = rayHit.point + Vector3.up * .5f;
-        }
-    }
 }

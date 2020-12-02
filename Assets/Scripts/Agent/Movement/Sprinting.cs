@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sprinting : MovementState
+public class Sprinting : OnGroundState
 {
     private float moveSpeed = 15f;
 
@@ -36,15 +36,6 @@ public class Sprinting : MovementState
         newVelocity = newVelocity.normalized;
         movement.SetHorizontalVelocity(newVelocity * moveSpeed);
         KeepGrounded();
-    }
-
-    RaycastHit rayHit;
-    private void KeepGrounded()
-    {
-        if (Physics.Raycast(transform.position, Vector3.down, out rayHit, 1.5f, groundLayer))
-        {
-            transform.position = rayHit.point + Vector3.up * .5f;
-        }
     }
 
 }

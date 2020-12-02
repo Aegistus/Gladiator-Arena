@@ -16,6 +16,7 @@ public class MovementController : MonoBehaviour
     private StateMachine stateMachine;
     private Rigidbody rb;
 
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
