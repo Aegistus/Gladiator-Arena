@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public abstract class Controller : MonoBehaviour
+public abstract class Controller : NetworkBehaviour
 {
     public bool Forwards { get; protected set; }
     public bool Backwards { get; protected set; }
