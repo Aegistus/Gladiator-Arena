@@ -33,24 +33,7 @@ public class Walking : OnGroundState
     {
         if (movement.Velocity.magnitude < moveSpeed)
         {
-            newVelocity = Vector3.zero;
-            if (controller.Forwards)
-            {
-                newVelocity += movement.lookDirection.forward;
-            }
-            if (controller.Backwards)
-            {
-                newVelocity += -movement.lookDirection.forward;
-            }
-            if (controller.Left)
-            {
-                newVelocity += -movement.lookDirection.right;
-            }
-            if (controller.Right)
-            {
-                newVelocity += movement.lookDirection.right;
-            }
-            newVelocity = newVelocity.normalized;
+            newVelocity = GetAgentMovementInput();
             movement.SetHorizontalVelocity(newVelocity * moveSpeed);
             RotateAgentModelToDirection(newVelocity);
         }

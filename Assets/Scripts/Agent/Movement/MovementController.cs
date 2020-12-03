@@ -30,6 +30,8 @@ public class MovementController : MonoBehaviour
             {typeof(Jumping), new Jumping(gameObject) },
             {typeof(Falling), new Falling(gameObject) },
             {typeof(Sprinting), new Sprinting(gameObject) },
+            {typeof(Crouching), new Crouching(gameObject) },
+            {typeof(CrouchWalking), new CrouchWalking(gameObject) },
         };
         StateMachine.SetStates(states, typeof(Idling));
     }

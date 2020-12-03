@@ -64,4 +64,30 @@ public abstract class MovementState : State
         movement.agentModel.rotation = Quaternion.Lerp(currentRotation, targetRotation, 50f * Time.deltaTime);
     }
 
+    Vector3 newVelocity;
+    protected Vector3 GetAgentMovementInput()
+    {
+        newVelocity = Vector3.zero;
+        if (controller.Forwards)
+        {
+            newVelocity += movement.lookDirection.forward;
+        }
+        if (controller.Backwards)
+        {
+            newVelocity += -movement.lookDirection.forward;
+        }
+        if (controller.Left)
+        {
+            newVelocity += -movement.lookDirection.right;
+        }
+        if (controller.Right)
+        {
+            newVelocity += movement.lookDirection.right;
+        }
+        newVelocity = newVelocity.normalized;
+        RotateAgentModelToDirection(newVelocity);
+        newVelocity = newVelocity.normalized;
+        return newVelocity;
+    }
+
 }

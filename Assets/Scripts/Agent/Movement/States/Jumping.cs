@@ -27,24 +27,7 @@ public class Jumping : MovementState
     Vector3 newVelocity;
     public override void DuringExecution()
     {
-        newVelocity = Vector3.zero;
-        if (controller.Forwards)
-        {
-            newVelocity += movement.lookDirection.forward;
-        }
-        if (controller.Backwards)
-        {
-            newVelocity += -movement.lookDirection.forward;
-        }
-        if (controller.Left)
-        {
-            newVelocity += -movement.lookDirection.right;
-        }
-        if (controller.Right)
-        {
-            newVelocity += movement.lookDirection.right;
-        }
-        newVelocity = newVelocity.normalized;
+        newVelocity = GetAgentMovementInput();
         if (newVelocity.sqrMagnitude > 0)
         {
             movement.SetHorizontalVelocity(startingVelocity + newVelocity * airMoveSpeed);
