@@ -168,6 +168,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   lookDirection: {fileID: 4828917951431313739}
+  agentModel: {fileID: 6801081108730475623}
 --- !u!54 &4828917951006747449
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1095,7 +1096,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6801081108730355629
 Transform:
   m_ObjectHideFlags: 0
@@ -1343,7 +1344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6801081108730441675
 Transform:
   m_ObjectHideFlags: 0
@@ -1608,7 +1609,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6801081108730375797
 Transform:
   m_ObjectHideFlags: 0
@@ -2144,7 +2145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6801081108730441743
 Transform:
   m_ObjectHideFlags: 0
@@ -3226,7 +3227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6801081108730350509
 Transform:
   m_ObjectHideFlags: 0

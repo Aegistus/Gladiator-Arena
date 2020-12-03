@@ -18,4 +18,9 @@ public abstract class OnGroundState : MovementState
             transform.position = rayHit.point + Vector3.up * .5f;
         }
     }
+
+    protected void RotateToFaceCameraDirection()
+    {
+        movement.agentModel.rotation = movement.lookDirection.rotation;
+    }
 }

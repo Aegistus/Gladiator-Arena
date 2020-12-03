@@ -55,6 +55,7 @@ public class Walking : OnGroundState
             movement.SetHorizontalVelocity(newVelocity * moveSpeed);
         }
         KeepGrounded();
+        RotateToFaceCameraDirection();
     }
 
 }

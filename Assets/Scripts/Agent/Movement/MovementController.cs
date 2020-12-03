@@ -9,6 +9,7 @@ public class MovementController : MonoBehaviour
 {
     public LayerMask groundLayer;
     public Transform lookDirection;
+    public Transform agentModel;
 
     public MovementState CurrentState => (MovementState)stateMachine.CurrentState;
     public Vector3 Velocity => rb.velocity;

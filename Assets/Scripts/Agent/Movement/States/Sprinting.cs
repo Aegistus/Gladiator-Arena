@@ -40,6 +40,7 @@ public class Sprinting : OnGroundState
         newVelocity = newVelocity.normalized;
         movement.SetHorizontalVelocity(newVelocity * moveSpeed);
         KeepGrounded();
+        RotateToFaceCameraDirection();
     }
 
 }
