@@ -33,14 +33,32 @@ public class Sprinting : OnGroundState
     public override void DuringExecution()
     {
         newVelocity = Vector3.zero;
-        if (controller.Forwards)
+        if (movement.Velocity.magnitude < moveSpeed)
         {
-            newVelocity += movement.lookDirection.forward;
+            newVelocity = Vector3.zero;
+            if (controller.Forwards)
+            {
+                newVelocity += movement.lookDirection.forward;
+            }
+            if (controller.Backwards)
+            {
+                newVelocity += -movement.lookDirection.forward;
+            }
+            if (controller.Left)
+            {
+                newVelocity += -movement.lookDirection.right;
+            }
+            if (controller.Right)
+            {
+                newVelocity += movement.lookDirection.right;
+            }
+            newVelocity = newVelocity.normalized;
+            movement.SetHorizontalVelocity(newVelocity * moveSpeed);
+            RotateAgentModelToDirection(newVelocity);
         }
         newVelocity = newVelocity.normalized;
         movement.SetHorizontalVelocity(newVelocity * moveSpeed);
         KeepGrounded();
-        RotateToFaceCameraDirection();
     }
 
 }

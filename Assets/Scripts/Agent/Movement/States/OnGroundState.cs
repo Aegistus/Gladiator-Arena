@@ -19,8 +19,14 @@ public abstract class OnGroundState : MovementState
         }
     }
 
-    protected void RotateToFaceCameraDirection()
+    Quaternion targetRotation, currentRotation;
+    protected void RotateAgentModelToDirection(Vector3 newVelocity)
     {
-        movement.agentModel.rotation = movement.lookDirection.rotation;
+        // make the agent's model rotate towards the direction of movement
+        currentRotation = movement.agentModel.rotation;
+        movement.agentModel.LookAt(newVelocity + movement.agentModel.position);
+        targetRotation = movement.agentModel.rotation;
+        movement.agentModel.rotation = currentRotation;
+        movement.agentModel.rotation = Quaternion.Lerp(currentRotation, targetRotation, .1f);
     }
 }

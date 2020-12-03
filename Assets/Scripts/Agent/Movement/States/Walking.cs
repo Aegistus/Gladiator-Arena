@@ -53,9 +53,9 @@ public class Walking : OnGroundState
             }
             newVelocity = newVelocity.normalized;
             movement.SetHorizontalVelocity(newVelocity * moveSpeed);
+            RotateAgentModelToDirection(newVelocity);
         }
         KeepGrounded();
-        RotateToFaceCameraDirection();
     }
 
 }
