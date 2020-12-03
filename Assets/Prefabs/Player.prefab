@@ -427,6 +427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6801081108730391605}
+  - component: {fileID: 1318521675459894091}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -450,6 +451,20 @@ Transform:
   m_Father: {fileID: 6801081108730348151}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1318521675459894091
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801081108730023613}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.15
+  m_Height: 0.3
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.09, z: 0}
 --- !u!1 &6801081108730029933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,6 +1833,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6801081108730359247}
+  - component: {fileID: 906191092320232644}
   m_Layer: 0
   m_Name: UpperLeg_R
   m_TagString: Untagged
@@ -1840,6 +1856,20 @@ Transform:
   m_Father: {fileID: 6801081108730381205}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &906191092320232644
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801081108730095781}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.15
+  m_Height: 0.5
+  m_Direction: 0
+  m_Center: {x: -0.15, y: 0, z: 0}
 --- !u!1 &6801081108730101743
 GameObject:
   m_ObjectHideFlags: 0
@@ -2355,7 +2385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6801081108730475623}
   - component: {fileID: 6801081108737424525}
-  - component: {fileID: 2357664631603791529}
+  - component: {fileID: 1005475896625733807}
   m_Layer: 0
   m_Name: Character_Chief_01_White
   m_TagString: Untagged
@@ -2403,7 +2433,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &2357664631603791529
+--- !u!136 &1005475896625733807
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2413,10 +2443,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 1.75
+  m_Radius: 0.2
+  m_Height: 0.4
   m_Direction: 1
-  m_Center: {x: 0, y: 0.87, z: 0}
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!1 &6801081108730128705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,6 +2487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6801081108730391965}
+  - component: {fileID: 443319637210308881}
   m_Layer: 0
   m_Name: Spine_01
   m_TagString: Untagged
@@ -2479,6 +2510,20 @@ Transform:
   m_Father: {fileID: 6801081108730381205}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &443319637210308881
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801081108730132569}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 0.9
+  m_Direction: 0
+  m_Center: {x: -0.1, y: 0, z: 0}
 --- !u!1 &6801081108730132957
 GameObject:
   m_ObjectHideFlags: 0
@@ -3620,6 +3665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6801081108730349677}
+  - component: {fileID: 8223229754966308782}
   m_Layer: 0
   m_Name: UpperLeg_L
   m_TagString: Untagged
@@ -3642,6 +3688,20 @@ Transform:
   m_Father: {fileID: 6801081108730381205}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8223229754966308782
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801081108730215559}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.15
+  m_Height: 0.5
+  m_Direction: 0
+  m_Center: {x: 0.16, y: 0, z: 0}
 --- !u!1 &6801081108730215897
 GameObject:
   m_ObjectHideFlags: 0

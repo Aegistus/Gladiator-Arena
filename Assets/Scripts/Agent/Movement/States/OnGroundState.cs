@@ -27,6 +27,6 @@ public abstract class OnGroundState : MovementState
         movement.agentModel.LookAt(newVelocity + movement.agentModel.position);
         targetRotation = movement.agentModel.rotation;
         movement.agentModel.rotation = currentRotation;
-        movement.agentModel.rotation = Quaternion.Lerp(currentRotation, targetRotation, .1f);
+        movement.agentModel.rotation = Quaternion.Lerp(currentRotation, targetRotation, 50f  * Time.deltaTime);
     }
 }
