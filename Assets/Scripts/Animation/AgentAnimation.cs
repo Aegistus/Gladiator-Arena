@@ -12,6 +12,7 @@ public class AgentAnimation : MonoBehaviour
     private int idleHash = Animator.StringToHash("Idling");
     private int walkingHash = Animator.StringToHash("Walking");
     private int jumpingHash = Animator.StringToHash("Jumping");
+    private int fallingHash = Animator.StringToHash("Falling");
 
     private Dictionary<Type, int> stateToHash;
 
@@ -27,6 +28,7 @@ public class AgentAnimation : MonoBehaviour
             {typeof(Idling), idleHash },
             {typeof(Walking), walkingHash },
             {typeof(Jumping), jumpingHash },
+            {typeof(Falling), fallingHash },
         };
         anim = GetComponentInChildren<Animator>();
         movement = GetComponent<MovementController>();

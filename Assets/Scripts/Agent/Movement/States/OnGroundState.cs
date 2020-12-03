@@ -18,15 +18,4 @@ public abstract class OnGroundState : MovementState
             transform.position = rayHit.point + Vector3.up * .5f;
         }
     }
-
-    Quaternion targetRotation, currentRotation;
-    protected void RotateAgentModelToDirection(Vector3 newVelocity)
-    {
-        // make the agent's model rotate towards the direction of movement
-        currentRotation = movement.agentModel.rotation;
-        movement.agentModel.LookAt(newVelocity + movement.agentModel.position);
-        targetRotation = movement.agentModel.rotation;
-        movement.agentModel.rotation = currentRotation;
-        movement.agentModel.rotation = Quaternion.Lerp(currentRotation, targetRotation, 50f  * Time.deltaTime);
-    }
 }

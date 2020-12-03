@@ -33,7 +33,7 @@ public abstract class MovementState : State
 
     private bool IsGrounded()
     {
-        if (Physics.BoxCast(transform.position, Vector3.one / 3, Vector3.down, transform.rotation, .5f, groundLayer))
+        if (Physics.BoxCast(transform.position, Vector3.one / 5, Vector3.down, transform.rotation, .5f, groundLayer))
         {
             return true;
         }
@@ -51,6 +51,17 @@ public abstract class MovementState : State
             return true;
         }
         return false;
+    }
+
+    Quaternion targetRotation, currentRotation;
+    protected void RotateAgentModelToDirection(Vector3 newVelocity)
+    {
+        // make the agent's model rotate towards the direction of movement
+        currentRotation = movement.agentModel.rotation;
+        movement.agentModel.LookAt(newVelocity + movement.agentModel.position);
+        targetRotation = movement.agentModel.rotation;
+        movement.agentModel.rotation = currentRotation;
+        movement.agentModel.rotation = Quaternion.Lerp(currentRotation, targetRotation, 50f * Time.deltaTime);
     }
 
 }

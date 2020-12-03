@@ -50,5 +50,6 @@ public class Falling : MovementState
         {
             movement.SetHorizontalVelocity(startingVelocity + newVelocity * airMoveSpeed);
         }
+        RotateAgentModelToDirection(newVelocity);
     }
 }

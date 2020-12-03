@@ -49,5 +49,6 @@ public class Jumping : MovementState
         {
             movement.SetHorizontalVelocity(startingVelocity + newVelocity * airMoveSpeed);
         }
+        RotateAgentModelToDirection(newVelocity);
     }
 }
