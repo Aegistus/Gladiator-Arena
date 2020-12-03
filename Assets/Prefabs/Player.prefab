@@ -942,6 +942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6801081108730451221}
+  - component: {fileID: 6334322050757200238}
   m_Layer: 0
   m_Name: Elbow_R
   m_TagString: Untagged
@@ -964,6 +965,20 @@ Transform:
   m_Father: {fileID: 6801081108730471969}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6334322050757200238
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801081108730038641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.075
+  m_Height: 0.4
+  m_Direction: 0
+  m_Center: {x: 0.25, y: 0, z: 0}
 --- !u!1 &6801081108730038729
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,6 +1100,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6801081108730376525}
+  - component: {fileID: 4876601763060798257}
   m_Layer: 0
   m_Name: Elbow_L
   m_TagString: Untagged
@@ -1107,6 +1123,20 @@ Transform:
   m_Father: {fileID: 6801081108730389323}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4876601763060798257
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801081108730042919}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.075
+  m_Height: 0.4
+  m_Direction: 0
+  m_Center: {x: -0.25, y: 0, z: 0}
 --- !u!1 &6801081108730047001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1993,6 +2023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6801081108730389323}
+  - component: {fileID: 6112174992083396709}
   m_Layer: 0
   m_Name: Shoulder_L
   m_TagString: Untagged
@@ -2016,6 +2047,20 @@ Transform:
   m_Father: {fileID: 6801081108730406425}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6112174992083396709
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801081108730103495}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.075
+  m_Height: 0.4
+  m_Direction: 0
+  m_Center: {x: -0.15, y: -0.02, z: 0}
 --- !u!1 &6801081108730105253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,6 +2368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6801081108730471969}
+  - component: {fileID: 4074369628467837008}
   m_Layer: 0
   m_Name: Shoulder_R
   m_TagString: Untagged
@@ -2345,6 +2391,20 @@ Transform:
   m_Father: {fileID: 6801081108730458493}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4074369628467837008
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801081108730120643}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.075
+  m_Height: 0.4
+  m_Direction: 0
+  m_Center: {x: 0.15, y: 0.02, z: 0}
 --- !u!1 &6801081108730121257
 GameObject:
   m_ObjectHideFlags: 0
