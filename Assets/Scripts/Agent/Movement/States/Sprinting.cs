@@ -26,7 +26,6 @@ public class Sprinting : OnGroundState
     public override void BeforeExecution()
     {
         Debug.Log("Sprinting");
-        anim.Play("Run");
     }
 
     Vector3 newVelocity;

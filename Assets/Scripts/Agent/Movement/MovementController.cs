@@ -11,18 +11,18 @@ public class MovementController : MonoBehaviour
     public Transform lookDirection;
     public Transform agentModel;
 
-    public MovementState CurrentState => (MovementState)stateMachine.CurrentState;
+    public MovementState CurrentState => (MovementState)StateMachine.CurrentState;
     public Vector3 Velocity => rb.velocity;
 
     private float velocityMod = 1f;
-    private StateMachine stateMachine;
+    public StateMachine StateMachine { get; private set; }
     private Rigidbody rb;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        stateMachine = new StateMachine();
+        StateMachine = new StateMachine();
         Dictionary<Type, State> states = new Dictionary<Type, State>()
         {
             {typeof(Idling), new Idling(gameObject) },
@@ -31,7 +31,7 @@ public class MovementController : MonoBehaviour
             {typeof(Falling), new Falling(gameObject) },
             {typeof(Sprinting), new Sprinting(gameObject) },
         };
-        stateMachine.SetStates(states, typeof(Idling));
+        StateMachine.SetStates(states, typeof(Idling));
     }
 
     public void SetHorizontalVelocity(Vector3 velocity)
@@ -57,7 +57,7 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
-        stateMachine.ExecuteState();
+        StateMachine.ExecuteState();
         //transform.Translate(velocity * Time.deltaTime, Space.World);
     }
 

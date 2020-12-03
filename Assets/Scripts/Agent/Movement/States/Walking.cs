@@ -26,7 +26,6 @@ public class Walking : OnGroundState
     public override void BeforeExecution()
     {
         movement.SetHorizontalVelocity(Vector3.zero);
-        anim.Play("Walk");
     }
 
     Vector3 newVelocity;
