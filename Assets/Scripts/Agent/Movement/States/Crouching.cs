@@ -7,7 +7,6 @@ public class Crouching : MovementState
     public Crouching(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Idling), Not(Crouch)));
-        transitionsTo.Add(new Transition(typeof(CrouchWalking), Move));
     }
 
     public override void AfterExecution()

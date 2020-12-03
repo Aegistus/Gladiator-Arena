@@ -9,7 +9,6 @@ public abstract class OnGroundState : MovementState
     protected OnGroundState(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Crouching), Crouch, Not(Move)));
-        transitionsTo.Add(new Transition(typeof(CrouchWalking), Crouch, Move));
     }
 
     protected void KeepGrounded()
