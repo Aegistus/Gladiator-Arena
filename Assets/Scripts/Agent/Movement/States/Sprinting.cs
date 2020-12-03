@@ -32,7 +32,6 @@ public class Sprinting : OnGroundState
     Vector3 newVelocity;
     public override void DuringExecution()
     {
-        newVelocity = Vector3.zero;
         if (movement.Velocity.magnitude < moveSpeed)
         {
             newVelocity = Vector3.zero;
@@ -55,9 +54,9 @@ public class Sprinting : OnGroundState
             newVelocity = newVelocity.normalized;
             movement.SetHorizontalVelocity(newVelocity * moveSpeed);
             RotateAgentModelToDirection(newVelocity);
+            newVelocity = newVelocity.normalized;
+            movement.SetHorizontalVelocity(newVelocity * moveSpeed);
         }
-        newVelocity = newVelocity.normalized;
-        movement.SetHorizontalVelocity(newVelocity * moveSpeed);
         KeepGrounded();
     }
 
