@@ -11,7 +11,7 @@ public abstract class MovementState : State
     protected Rigidbody rb;
     protected List<string> animationNames = new List<string>();
     protected List<string> soundNames = new List<string>();
-    //protected Animator anim;
+    protected Animator anim;
 
     public Func<bool> Move => () => controller.Forwards || controller.Backwards || controller.Right || controller.Left;
     public Func<bool> Jump => () => controller.Jump;
@@ -28,7 +28,7 @@ public abstract class MovementState : State
     {
         movement = gameObject.GetComponent<MovementController>();
         controller = gameObject.GetComponent<Controller>();
-        //anim = gameObject.GetComponentInChildren<Animator>();
+        anim = gameObject.GetComponentInChildren<Animator>();
         groundLayer = gameObject.GetComponent<MovementController>().groundLayer;
         rb = gameObject.GetComponent<Rigidbody>();
     }

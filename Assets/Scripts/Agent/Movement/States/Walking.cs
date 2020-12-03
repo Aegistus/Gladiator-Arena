@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Walking : OnGroundState
 {
-    private float moveSpeed = 7.5f;
+    private float moveSpeed = 3f;
 
     public Walking(GameObject gameObject) : base(gameObject)
     {
@@ -26,6 +26,7 @@ public class Walking : OnGroundState
     public override void BeforeExecution()
     {
         movement.SetHorizontalVelocity(Vector3.zero);
+        anim.Play("Walk");
     }
 
     Vector3 newVelocity;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sprinting : OnGroundState
 {
-    private float moveSpeed = 15f;
+    private float moveSpeed = 8f;
 
     public Sprinting(GameObject gameObject) : base(gameObject)
     {
@@ -26,6 +26,7 @@ public class Sprinting : OnGroundState
     public override void BeforeExecution()
     {
         Debug.Log("Sprinting");
+        anim.Play("Run");
     }
 
     Vector3 newVelocity;

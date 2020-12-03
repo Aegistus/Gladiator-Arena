@@ -21,7 +21,7 @@ public class Idling : OnGroundState
 
     public override void BeforeExecution()
     {
-        //anim.Play(animationNames[0]);
+        anim.Play("Idle");
         if (movement.Velocity.magnitude < 10)
         {
             movement.SetHorizontalVelocity(Vector3.zero);
