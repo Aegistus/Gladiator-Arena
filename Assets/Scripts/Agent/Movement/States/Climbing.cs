@@ -17,7 +17,10 @@ public class Climbing : MovementState
 
     public override void AfterExecution()
     {
-        transform.position += movement.agentModel.forward + (Vector3.up * 1.75f);
+        if (TimerUp())
+        {
+            transform.position += movement.agentModel.forward + (Vector3.up * 1.75f);
+        }
     }
 
     RaycastHit rayHit;

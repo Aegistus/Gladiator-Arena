@@ -10,7 +10,8 @@ public class MovementController : MonoBehaviour
     public LayerMask groundLayer;
     public Transform lookDirection;
     public Transform agentModel;
-    public WallDetector wallDetector;
+    public WallDetector wallDetectorUpper;
+    public WallDetector wallDetectorLower;
     public LedgeDetector ledgeDetector;
 
     public MovementState CurrentState => (MovementState)StateMachine.CurrentState;
@@ -34,6 +35,7 @@ public class MovementController : MonoBehaviour
             {typeof(Sprinting), new Sprinting(gameObject) },
             {typeof(Crouching), new Crouching(gameObject) },
             {typeof(Climbing), new Climbing(gameObject) },
+            {typeof(Vaulting), new Vaulting(gameObject) },
         };
         StateMachine.SetStates(states, typeof(Idling));
     }

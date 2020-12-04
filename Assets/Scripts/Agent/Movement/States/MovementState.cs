@@ -21,7 +21,8 @@ public abstract class MovementState : State
     public Func<bool> OnGround => () => IsGrounded();
     public Func<bool> NextToWall => () => IsNextToWall();
     public Func<bool> LedgeInReach => () => movement.ledgeDetector.CollidingWith == 0;
-    public Func<bool> FacingWall => () => movement.wallDetector.CollidingWith > 0;
+    public Func<bool> FacingHighWall => () => movement.wallDetectorUpper.CollidingWith > 0;
+    public Func<bool> FacingLowWall => () => movement.wallDetectorLower.CollidingWith > 0;
     public Func<bool> Rising => () => rb.velocity.y > 0;
     public Func<bool> Falling => () => rb.velocity.y < -.1f;
 
@@ -63,7 +64,7 @@ public abstract class MovementState : State
         movement.agentModel.LookAt(newVelocity + movement.agentModel.position);
         targetRotation = movement.agentModel.rotation;
         movement.agentModel.rotation = currentRotation;
-        movement.agentModel.rotation = Quaternion.Lerp(currentRotation, targetRotation, 50f * Time.deltaTime);
+        movement.agentModel.rotation = Quaternion.Lerp(currentRotation, targetRotation, 10f * Time.deltaTime);
     }
 
     Vector3 newVelocity;
