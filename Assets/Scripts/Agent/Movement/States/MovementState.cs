@@ -23,6 +23,7 @@ public abstract class MovementState : State
     public Func<bool> LedgeInReach => () => movement.ledgeDetector.CollidingWith == 0;
     public Func<bool> FacingHighWall => () => movement.wallDetectorUpper.CollidingWith > 0;
     public Func<bool> FacingLowWall => () => movement.wallDetectorLower.CollidingWith > 0;
+    public Func<bool> OtherSideOfVaultOpen => () => movement.vaultOtherSideDetector.CollidingWith == 0;
     public Func<bool> Rising => () => rb.velocity.y > 0;
     public Func<bool> Falling => () => rb.velocity.y < -.1f;
 

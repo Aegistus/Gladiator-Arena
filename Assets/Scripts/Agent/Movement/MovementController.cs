@@ -13,6 +13,7 @@ public class MovementController : MonoBehaviour
     public WallDetector wallDetectorUpper;
     public WallDetector wallDetectorLower;
     public LedgeDetector ledgeDetector;
+    public WallDetector vaultOtherSideDetector;
 
     public MovementState CurrentState => (MovementState)StateMachine.CurrentState;
     public Vector3 Velocity => rb.velocity;

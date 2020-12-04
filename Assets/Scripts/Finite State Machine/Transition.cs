@@ -28,4 +28,10 @@ public class Transition
         ToState = toState;
         Condition = () => condition1() && condition2() && condition3();
     }
+
+    public Transition(Type toState, Func<bool> condition1, Func<bool> condition2, Func<bool> condition3, Func<bool> condition4)
+    {
+        ToState = toState;
+        Condition = () => condition1() && condition2() && condition3() && condition4();
+    }
 }

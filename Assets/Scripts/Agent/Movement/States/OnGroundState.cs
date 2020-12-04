@@ -10,7 +10,7 @@ public abstract class OnGroundState : MovementState
     {
         transitionsTo.Add(new Transition(typeof(Crouching), Crouch, Not(Move)));
         transitionsTo.Add(new Transition(typeof(Climbing), Jump, FacingHighWall, LedgeInReach));
-        transitionsTo.Add(new Transition(typeof(Vaulting), Jump, Not(FacingHighWall), FacingLowWall));
+        transitionsTo.Add(new Transition(typeof(Vaulting), Jump, Not(FacingHighWall), FacingLowWall, OtherSideOfVaultOpen));
         transitionsTo.Add(new Transition(typeof(Jumping), Jump, OnGround, Not(FacingHighWall)));
     }
 
