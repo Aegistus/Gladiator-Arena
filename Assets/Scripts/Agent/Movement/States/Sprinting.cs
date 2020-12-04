@@ -11,7 +11,6 @@ public class Sprinting : OnGroundState
         animationNames.Add("Run");
         transitionsTo.Add(new Transition(typeof(Walking), Not(Run)));
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move), Not(Run)));
-        transitionsTo.Add(new Transition(typeof(Jumping), Jump, OnGround));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
     }
 

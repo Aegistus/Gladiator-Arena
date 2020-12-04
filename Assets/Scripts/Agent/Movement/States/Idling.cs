@@ -10,7 +10,6 @@ public class Idling : OnGroundState
     {
         animationNames.Add("Idle");
         transitionsTo.Add(new Transition(typeof(Walking), Move));
-        transitionsTo.Add(new Transition(typeof(Jumping), Jump, Not(Falling), Not(Rising)));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
     }
 
