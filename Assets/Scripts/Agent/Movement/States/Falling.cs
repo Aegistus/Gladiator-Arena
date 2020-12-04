@@ -16,7 +16,6 @@ public class Falling : MovementState
     public override void AfterExecution()
     {
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-        
     }
 
     public override void BeforeExecution()

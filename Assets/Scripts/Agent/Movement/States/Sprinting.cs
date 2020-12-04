@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sprinting : OnGroundState
 {
-    private float moveSpeed = 8f;
+    private float moveSpeed = 7f;
 
     public Sprinting(GameObject gameObject) : base(gameObject)
     {

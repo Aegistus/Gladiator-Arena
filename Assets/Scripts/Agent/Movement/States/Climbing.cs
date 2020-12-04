@@ -19,7 +19,7 @@ public class Climbing : MovementState
     {
         if (TimerUp())
         {
-            transform.position += movement.agentModel.forward + (Vector3.up * 1.75f);
+            transform.position += (movement.agentModel.forward) + (Vector3.up * .8f);
         }
     }
 

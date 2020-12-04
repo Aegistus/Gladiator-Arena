@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 164734757}
   - component: {fileID: 164734759}
-  - component: {fileID: 164734758}
+  - component: {fileID: 1366899841}
   m_Layer: 9
   m_Name: Wall Detector Upper
   m_TagString: Untagged
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164734756}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.4319999, z: 0.689}
+  m_LocalPosition: {x: 0, y: 1.4319999, z: 0.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6165963437263175082}
@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58233dff0a76f849b23e67b122c11d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &164734758
-CapsuleCollider:
+--- !u!65 &1366899841
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -54,9 +54,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
+  serializedVersion: 2
+  m_Size: {x: 0.48, y: 0.5, z: 0.75}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &669914299
 GameObject:
@@ -84,7 +83,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669914299}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.61, z: 0.679}
+  m_LocalPosition: {x: 0, y: 2.48, z: 0.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6165963437263175082}
@@ -113,7 +112,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Size: {x: 1.21, y: 0.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1242614689
 GameObject:
@@ -183,6 +182,7 @@ GameObject:
   - component: {fileID: 8058227082051833579}
   - component: {fileID: 7776617164292849910}
   - component: {fileID: 353807443077703966}
+  - component: {fileID: 3321535162374682729}
   m_Layer: 9
   m_Name: Vault Otherside Detector
   m_TagString: Untagged
@@ -229,6 +229,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58233dff0a76f849b23e67b122c11d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &3321535162374682729
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039098526628076716}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.75, z: 2.16}
+  m_Center: {x: 0, y: 0.73, z: -1.26}
 --- !u!1 &2718183336273617540
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,7 +777,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6801081108730023613}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.15
   m_Height: 0.3
@@ -2721,7 +2734,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6801081108730475623}
   - component: {fileID: 6801081108737424525}
-  - component: {fileID: 1005475896625733807}
+  - component: {fileID: 3451515371363561835}
   m_Layer: 0
   m_Name: Agent Model
   m_TagString: Untagged
@@ -2770,7 +2783,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &1005475896625733807
+--- !u!136 &3451515371363561835
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2908,7 +2921,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6801081108730402953
 Transform:
   m_ObjectHideFlags: 0
@@ -3787,7 +3800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6801081108730461849
 Transform:
   m_ObjectHideFlags: 0
@@ -4207,6 +4220,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -12.026978
       objectReference: {fileID: 0}
+    - target: {fileID: 64332563918427860, guid: 694b0fc9d0f51d34fb49ea2b3bad4631, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 694b0fc9d0f51d34fb49ea2b3bad4631, type: 3}
 --- !u!4 &1040906953 stripped
@@ -4267,6 +4284,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 475400, guid: 43551f67c7fb26540b58de3f336c2908, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64681989130743484, guid: 43551f67c7fb26540b58de3f336c2908, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

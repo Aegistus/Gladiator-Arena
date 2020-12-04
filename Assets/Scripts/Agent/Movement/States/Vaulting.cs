@@ -7,10 +7,10 @@ public class Vaulting : MovementState
 {
     Func<bool> TimerUp => () => timer >= timerMax;
 
-    float timerMax = 1.1f;
+    float timerMax = 1f;
     float timer;
 
-    float vaultSpeed = 3f;
+    float vaultSpeed = 4f;
 
     public Vaulting(GameObject gameObject) : base(gameObject)
     {
@@ -21,7 +21,7 @@ public class Vaulting : MovementState
     {
         if (TimerUp())
         {
-            transform.position += movement.agentModel.forward;
+            transform.position += movement.agentModel.forward * .25f;
         }
         rb.isKinematic = false;
         rb.detectCollisions = true;
