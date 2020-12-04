@@ -11,7 +11,6 @@ public class Vaulting : MovementState
     float timer;
 
     float vaultSpeed = 3f;
-    float vaultHeight = .75f;
 
     public Vaulting(GameObject gameObject) : base(gameObject)
     {
@@ -33,7 +32,6 @@ public class Vaulting : MovementState
         timer = 0;
         rb.isKinematic = true;
         rb.detectCollisions = false;
-        //transform.position += vaultHeight * Vector3.up;
     }
     
     public override void DuringExecution()

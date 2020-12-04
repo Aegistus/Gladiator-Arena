@@ -37,6 +37,7 @@ public class MovementController : MonoBehaviour
             {typeof(Crouching), new Crouching(gameObject) },
             {typeof(Climbing), new Climbing(gameObject) },
             {typeof(Vaulting), new Vaulting(gameObject) },
+            {typeof(Sliding), new Sliding(gameObject) },
         };
         StateMachine.SetStates(states, typeof(Idling));
     }

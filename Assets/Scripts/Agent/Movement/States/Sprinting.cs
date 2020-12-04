@@ -12,6 +12,7 @@ public class Sprinting : OnGroundState
         transitionsTo.Add(new Transition(typeof(Walking), Not(Run)));
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move), Not(Run)));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
+        transitionsTo.Add(new Transition(typeof(Sliding), Crouch));
     }
 
     public override void AfterExecution()
@@ -34,6 +35,7 @@ public class Sprinting : OnGroundState
         {
             newVelocity = GetAgentMovementInput();
             movement.SetHorizontalVelocity(newVelocity * moveSpeed);
+            RotateAgentModelToDirection(newVelocity);
         }
         KeepGrounded();
     }
