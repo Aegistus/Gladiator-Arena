@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164734756}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.4319999, z: 0.61}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1.993, z: 0.51}
+  m_LocalScale: {x: 1, y: 1, z: 0.69036}
   m_Children: []
   m_Father: {fileID: 6165963437263175082}
   m_RootOrder: 0
@@ -387,6 +387,7 @@ GameObject:
   - component: {fileID: 4828917951006747455}
   - component: {fileID: 4828917951006747450}
   - component: {fileID: 2856627226801548590}
+  - component: {fileID: 1680635285654721201}
   - component: {fileID: 4828917951006747448}
   - component: {fileID: 4828917951006747449}
   - component: {fileID: 8478750066311500707}
@@ -443,6 +444,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593eac2fd581df644a7565d8f50a5b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1680635285654721201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828917951006747454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3d71eb0f475b14492e2811e9b92743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHand: {fileID: 6801081108730446309}
+  leftHand: {fileID: 6801081108730389051}
+  maxCarriedEquipment: 4
 --- !u!114 &4828917951006747448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4249,7 +4265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 106878, guid: d9997adaf286f9b45a050f836bce2f10, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 402282, guid: d9997adaf286f9b45a050f836bce2f10, type: 3}
       propertyPath: m_LocalPosition.x
