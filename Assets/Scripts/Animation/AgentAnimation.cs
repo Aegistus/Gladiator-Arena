@@ -60,4 +60,15 @@ public class AgentAnimation : MonoBehaviour
             prevStateHash = stateToHash[nextStateType];
         }
     }
+
+    int lastLayerIndex;
+    public void ChangeAnimationType(string layerName)
+    {
+        int layerIndex = anim.GetLayerIndex(layerName);
+        for (int i = 0; i < anim.layerCount; i++)
+        {
+            anim.SetLayerWeight(i, 0);
+        }
+        anim.SetLayerWeight(layerIndex, 1);
+    }
 }

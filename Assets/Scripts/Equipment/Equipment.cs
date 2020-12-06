@@ -6,10 +6,11 @@ public class Equipment : MonoBehaviour
 {
     public enum Usage
     {
-        Primary, Secondary, TwoHanded
+        Primary, Secondary, Both, Either
     }
 
     public Usage usage;
+    public string animationLayer;
 
     public bool Equipped { get; private set; }
 

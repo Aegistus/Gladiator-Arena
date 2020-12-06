@@ -8,63 +8,80 @@ public class AgentEquipment : MonoBehaviour
     public Transform secondaryHand;
     public int maxCarriedEquipment = 4;
 
-    public Equipment primaryEquipped { get; private set; }
-    public Equipment secondaryEquipped { get; private set; }
+    public Equipment PrimaryEquipped { get; private set; }
+    public Equipment SecondaryEquipped { get; private set; }
 
-    private List<Equipment> carriedEquipment;
+    public List<Equipment> primaryEquipment;
+    public List<Equipment> secondaryEquipment;
+
+    private AgentAnimation agentAnim;
     private int primaryIndex;
     private int secondaryIndex;
 
+    private void Awake()
+    {
+        agentAnim = GetComponentInChildren<AgentAnimation>();
+    }
+
     public void GoToNextPrimaryEquipment()
     {
-        bool compatibleEquipment = false;
-        int index = primaryIndex;
-        index++;
-        while (compatibleEquipment == false && index != primaryIndex)
+        if (primaryEquipment.Count > 0)
         {
-            if (index >= carriedEquipment.Count)
+            primaryIndex++;
+            if (primaryIndex >= primaryEquipment.Count)
             {
-                index = 0;
+                primaryIndex = 0;
             }
-            if (carriedEquipment[index].usage != Equipment.Usage.Primary
-                && carriedEquipment[index].usage != Equipment.Usage.TwoHanded)
+            PrimaryEquipped?.UnEquip();
+            PrimaryEquipped = primaryEquipment[primaryIndex];
+            PrimaryEquipped?.Equip(primaryHand);
+            if (PrimaryEquipped.usage == Equipment.Usage.Both)
             {
-                compatibleEquipment = true;
-                primaryEquipped.UnEquip();
-                primaryEquipped = carriedEquipment[index];
-                primaryEquipped.Equip(primaryHand);
+                SecondaryEquipped?.UnEquip();
+                SecondaryEquipped = null;
             }
-            index++;
         }
+        else if (primaryEquipment.Count == 0)
+        {
+            PrimaryEquipped = null;
+        }
+        agentAnim.ChangeAnimationType(PrimaryEquipped.animationLayer);
     }
 
     public void GoToNextSecondaryEquipment()
     {
-        bool compatibleEquipment = false;
-        int index = secondaryIndex;
-        index++;
-        while (compatibleEquipment == false && index != secondaryIndex)
+        if (PrimaryEquipped.usage != Equipment.Usage.Both)
         {
-            if (index >= carriedEquipment.Count)
+            if (secondaryEquipment.Count > 0)
             {
-                index = 0;
+                secondaryIndex++;
+                if (secondaryIndex >= secondaryEquipment.Count)
+                {
+                    secondaryIndex = 0;
+                }
+                SecondaryEquipped?.UnEquip();
+                SecondaryEquipped = secondaryEquipment[secondaryIndex];
+                SecondaryEquipped?.Equip(secondaryHand);
             }
-            if (carriedEquipment[index].usage != Equipment.Usage.Secondary)
+            else if (secondaryEquipment.Count == 0)
             {
-                compatibleEquipment = true;
-                secondaryEquipped.UnEquip();
-                secondaryEquipped = carriedEquipment[index];
-                secondaryEquipped.Equip(secondaryHand);
+                SecondaryEquipped = null;
             }
-            index++;
         }
     }
 
     public void PickupEquipment(Equipment newEquipment)
     {
-        if (carriedEquipment.Count < maxCarriedEquipment)
+        if (primaryEquipment.Count + secondaryEquipment.Count < maxCarriedEquipment)
         {
-            carriedEquipment.Add(newEquipment);
+            if (newEquipment.usage == Equipment.Usage.Primary || newEquipment.usage == Equipment.Usage.Both)
+            {
+                primaryEquipment.Add(newEquipment);
+            }
+            else
+            {
+                secondaryEquipment.Add(newEquipment);
+            }
         }
     }
 
