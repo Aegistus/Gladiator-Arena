@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Falling : MovementState
+public class Falling : InAirState
 {
-    private float airMoveSpeed = 1f;
+    private float airMoveSpeed = .01f;
     Vector3 startingVelocity;
 
     public Falling(GameObject gameObject) : base(gameObject)
@@ -20,6 +20,7 @@ public class Falling : MovementState
 
     public override void BeforeExecution()
     {
+        base.BeforeExecution();
         Debug.Log("Falling");
         //anim.Play(animationNames[0]);
         startingVelocity = movement.Velocity;
@@ -28,6 +29,7 @@ public class Falling : MovementState
     Vector3 newVelocity;
     public override void DuringExecution()
     {
+        base.DuringExecution();   
         newVelocity = Vector3.zero;
         if (controller.Forwards)
         {

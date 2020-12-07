@@ -8,7 +8,7 @@ public abstract class MovementState : State
     protected LayerMask groundLayer;
     protected MovementController movement;
     protected Controller controller;
-    protected Rigidbody rb;
+    protected CharacterController charController;
     protected List<string> animationNames = new List<string>();
     protected List<string> soundNames = new List<string>();
 
@@ -24,15 +24,15 @@ public abstract class MovementState : State
     public Func<bool> FacingHighWall => () => movement.wallDetectorUpper.CollidingWith > 0;
     public Func<bool> FacingLowWall => () => movement.wallDetectorLower.CollidingWith > 0;
     public Func<bool> OtherSideOfVaultOpen => () => movement.vaultOtherSideDetector.CollidingWith == 0;
-    public Func<bool> Rising => () => rb.velocity.y > 0;
-    public Func<bool> Falling => () => rb.velocity.y < -.1f;
+    public Func<bool> Rising => () => charController.velocity.y > 0;
+    public Func<bool> Falling => () => charController.velocity.y < -.1f;
 
     public MovementState(GameObject gameObject) : base(gameObject)
     {
         movement = gameObject.GetComponent<MovementController>();
         controller = gameObject.GetComponent<Controller>();
         groundLayer = gameObject.GetComponent<MovementController>().groundLayer;
-        rb = gameObject.GetComponent<Rigidbody>();
+        charController = gameObject.GetComponent<CharacterController>();
     }
 
     private bool IsGrounded()

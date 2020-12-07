@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-[RequireComponent(typeof(Rigidbody))]
 public class MovementController : MonoBehaviour
 {
     public LayerMask groundLayer;
@@ -16,17 +15,16 @@ public class MovementController : MonoBehaviour
     public WallDetector vaultOtherSideDetector;
 
     public MovementState CurrentState => (MovementState)StateMachine.CurrentState;
-    public Vector3 Velocity => rb.velocity;
+    public Vector3 Velocity => charController.velocity;
 
     private float velocityMod = 1f;
     public StateMachine StateMachine { get; private set; }
-    private Rigidbody rb;
-
+    private CharacterController charController;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
         StateMachine = new StateMachine();
+        charController = GetComponent<CharacterController>();
         Dictionary<Type, State> states = new Dictionary<Type, State>()
         {
             {typeof(Idling), new Idling(gameObject) },
@@ -44,23 +42,12 @@ public class MovementController : MonoBehaviour
 
     public void SetHorizontalVelocity(Vector3 velocity)
     {
-        rb.velocity = new Vector3(velocity.x * velocityMod, rb.velocity.y, velocity.z * velocityMod);
+        charController.Move(new Vector3(velocity.x * velocityMod, charController.velocity.y, velocity.z * velocityMod));
     }
 
     public void SetVerticalVelocity(float vertVelocity)
     {
-        rb.velocity = new Vector3(rb.velocity.x, vertVelocity, rb.velocity.z);
-    }
-
-    public void AddVelocity(Vector3 additional)
-    {
-        rb.velocity += additional * velocityMod;
-    }
-
-    public void ModifyVelocity(float percentChange)
-    {
-        velocityMod = percentChange;
-        rb.velocity *= velocityMod;
+        charController.Move(new Vector3(charController.velocity.x, vertVelocity, charController.velocity.z));
     }
 
     private void Update()
@@ -68,5 +55,4 @@ public class MovementController : MonoBehaviour
         StateMachine.ExecuteState();
         //transform.Translate(velocity * Time.deltaTime, Space.World);
     }
-
 }

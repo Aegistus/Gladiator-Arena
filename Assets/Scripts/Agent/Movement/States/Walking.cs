@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Walking : OnGroundState
 {
-    private float moveSpeed = 3f;
+    private float moveSpeed = .02f;
 
     public Walking(GameObject gameObject) : base(gameObject)
     {

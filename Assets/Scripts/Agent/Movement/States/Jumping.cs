@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Jumping : MovementState
+public class Jumping : InAirState
 {
     private float jumpForce = 4.85f;
     private float airMoveSpeed = 2f;
@@ -19,6 +19,7 @@ public class Jumping : MovementState
 
     public override void BeforeExecution()
     {
+        base.BeforeExecution();
         Debug.Log("Jumping");
         movement.SetVerticalVelocity(jumpForce);
         startingVelocity = movement.Velocity * .75f;
@@ -27,6 +28,7 @@ public class Jumping : MovementState
     Vector3 newVelocity;
     public override void DuringExecution()
     {
+        base.DuringExecution();
         newVelocity = GetAgentMovementInput();
         if (newVelocity.sqrMagnitude > 0)
         {
