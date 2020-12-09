@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class Jumping : InAirState
+public class Jumping : MovementState
 {
-    private float jumpForce = 4.85f;
+    private float jumpForce = 5f;
     private float airMoveSpeed = 2f;
     Vector3 startingVelocity;
 
@@ -14,26 +14,22 @@ public class Jumping : InAirState
 
     public override void AfterExecution()
     {
-
+        movement.SetInAir(false);
     }
 
     public override void BeforeExecution()
     {
-        base.BeforeExecution();
         Debug.Log("Jumping");
-        movement.SetVerticalVelocity(jumpForce);
-        startingVelocity = movement.Velocity * .75f;
+        startingVelocity = movement.velocity * .75f;
+        movement.SetInAir(true);
     }
 
     Vector3 newVelocity;
     public override void DuringExecution()
     {
-        base.DuringExecution();
         newVelocity = GetAgentMovementInput();
-        if (newVelocity.sqrMagnitude > 0)
-        {
-            movement.SetHorizontalVelocity(startingVelocity + newVelocity * airMoveSpeed);
-        }
+        movement.SetHorizontalVelocity(startingVelocity + newVelocity * airMoveSpeed);
+        movement.SetVerticalVelocity(jumpForce);
         RotateAgentModelToDirection(newVelocity);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sprinting : OnGroundState
 {
-    private float moveSpeed = .05f;
+    private float moveSpeed = 6f;
 
     public Sprinting(GameObject gameObject) : base(gameObject)
     {
@@ -17,7 +17,7 @@ public class Sprinting : OnGroundState
 
     public override void AfterExecution()
     {
-        if (movement.Velocity.y > 0)
+        if (movement.velocity.y > 0)
         {
             movement.SetVerticalVelocity(0);
         }
@@ -28,15 +28,12 @@ public class Sprinting : OnGroundState
         Debug.Log("Sprinting");
     }
 
-    Vector3 newVelocity;
+    Vector3 inputVelocity;
     public override void DuringExecution()
     {
-        if (movement.Velocity.magnitude < moveSpeed)
-        {
-            newVelocity = GetAgentMovementInput();
-            movement.SetHorizontalVelocity(newVelocity * moveSpeed);
-            RotateAgentModelToDirection(newVelocity);
-        }
+        inputVelocity = GetAgentMovementInput();
+        movement.SetHorizontalVelocity(inputVelocity * moveSpeed);
+        RotateAgentModelToDirection(inputVelocity);
         KeepGrounded();
     }
 

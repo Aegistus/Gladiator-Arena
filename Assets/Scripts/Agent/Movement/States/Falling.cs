@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Falling : InAirState
+public class Falling : MovementState
 {
     private float airMoveSpeed = .01f;
     Vector3 startingVelocity;
@@ -15,40 +15,22 @@ public class Falling : InAirState
 
     public override void AfterExecution()
     {
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        movement.SetInAir(false);
     }
 
     public override void BeforeExecution()
     {
-        base.BeforeExecution();
         Debug.Log("Falling");
         //anim.Play(animationNames[0]);
-        startingVelocity = movement.Velocity;
+        startingVelocity = movement.velocity;
+        movement.SetInAir(true);
     }
 
     Vector3 newVelocity;
     public override void DuringExecution()
     {
-        base.DuringExecution();   
-        newVelocity = Vector3.zero;
-        if (controller.Forwards)
-        {
-            newVelocity += movement.lookDirection.forward;
-        }
-        if (controller.Backwards)
-        {
-            newVelocity += -movement.lookDirection.forward;
-        }
-        if (controller.Left)
-        {
-            newVelocity += -movement.lookDirection.right;
-        }
-        if (controller.Right)
-        {
-            newVelocity += movement.lookDirection.right;
-        }
-        newVelocity = newVelocity.normalized;
-        if (newVelocity.sqrMagnitude> 0)
+        newVelocity = GetAgentMovementInput();
+        if (newVelocity.sqrMagnitude > 0)
         {
             movement.SetHorizontalVelocity(startingVelocity + newVelocity * airMoveSpeed);
         }

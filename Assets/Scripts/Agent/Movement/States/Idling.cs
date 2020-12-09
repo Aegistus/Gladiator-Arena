@@ -20,7 +20,7 @@ public class Idling : OnGroundState
 
     public override void BeforeExecution()
     {
-        if (movement.Velocity.magnitude < 10)
+        if (movement.velocity.magnitude < 10)
         {
             movement.SetHorizontalVelocity(Vector3.zero);
         }

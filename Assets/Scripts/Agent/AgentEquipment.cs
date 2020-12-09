@@ -50,7 +50,7 @@ public class AgentEquipment : MonoBehaviour
 
     public void GoToNextSecondaryEquipment()
     {
-        if (PrimaryEquipped.usage != Equipment.Usage.Both)
+        if (PrimaryEquipped?.usage != Equipment.Usage.Both)
         {
             if (secondaryEquipment.Count > 0)
             {

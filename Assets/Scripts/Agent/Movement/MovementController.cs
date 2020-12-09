@@ -15,11 +15,11 @@ public class MovementController : MonoBehaviour
     public WallDetector vaultOtherSideDetector;
 
     public MovementState CurrentState => (MovementState)StateMachine.CurrentState;
-    public Vector3 Velocity => charController.velocity;
+    public Vector3 velocity;
 
-    private float velocityMod = 1f;
     public StateMachine StateMachine { get; private set; }
     private CharacterController charController;
+    private bool inAir = false;
 
     private void Awake()
     {
@@ -42,17 +42,30 @@ public class MovementController : MonoBehaviour
 
     public void SetHorizontalVelocity(Vector3 velocity)
     {
-        charController.Move(new Vector3(velocity.x * velocityMod, charController.velocity.y, velocity.z * velocityMod));
+        this.velocity = velocity;
     }
 
     public void SetVerticalVelocity(float vertVelocity)
     {
-        charController.Move(new Vector3(charController.velocity.x, vertVelocity, charController.velocity.z));
+        velocity.y = vertVelocity;
+    }
+
+    public void SetInAir(bool inAir)
+    {
+        this.inAir = inAir;
     }
 
     private void Update()
     {
         StateMachine.ExecuteState();
-        //transform.Translate(velocity * Time.deltaTime, Space.World);
+        if (inAir)
+        {
+            velocity.y += -9.8f * Time.deltaTime;
+        }
+        else
+        {
+            velocity.y = 0;
+        }
+        charController.Move(velocity * Time.deltaTime);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Walking : OnGroundState
 {
-    private float moveSpeed = .02f;
+    private float moveSpeed = 3f;
 
     public Walking(GameObject gameObject) : base(gameObject)
     {
@@ -16,7 +16,7 @@ public class Walking : OnGroundState
 
     public override void AfterExecution()
     {
-        if (movement.Velocity.y > 0)
+        if (movement.velocity.y > 0)
         {
             movement.SetVerticalVelocity(0);
         }
@@ -27,15 +27,12 @@ public class Walking : OnGroundState
         movement.SetHorizontalVelocity(Vector3.zero);
     }
 
-    Vector3 newVelocity;
+    Vector3 inputVelocity;
     public override void DuringExecution()
     {
-        if (movement.Velocity.magnitude < moveSpeed)
-        {
-            newVelocity = GetAgentMovementInput();
-            movement.SetHorizontalVelocity(newVelocity * moveSpeed);
-            RotateAgentModelToDirection(newVelocity);
-        }
+        inputVelocity = GetAgentMovementInput();
+        movement.SetHorizontalVelocity(inputVelocity * moveSpeed);
+        RotateAgentModelToDirection(inputVelocity);
         KeepGrounded();
     }
 
