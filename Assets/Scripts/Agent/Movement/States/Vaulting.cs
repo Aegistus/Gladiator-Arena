@@ -10,7 +10,7 @@ public class Vaulting : MovementState
     float timerMax = 1f;
     float timer;
 
-    float vaultSpeed = .2f;
+    float vaultSpeed = 3.5f;
 
     public Vaulting(GameObject gameObject) : base(gameObject)
     {
