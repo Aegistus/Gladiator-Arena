@@ -19,7 +19,7 @@ public class Sprinting : OnGroundState
     {
         if (movement.velocity.y > 0)
         {
-            movement.SetVerticalVelocity(0);
+            movement.AddVerticalVelocity(0);
         }
     }
 

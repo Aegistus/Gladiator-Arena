@@ -2,7 +2,7 @@
 
 public class Jumping : MovementState
 {
-    private float jumpForce = 5f;
+    private float jumpForce = 7f;
     private float airMoveSpeed = 2f;
     Vector3 startingVelocity;
 
@@ -14,14 +14,14 @@ public class Jumping : MovementState
 
     public override void AfterExecution()
     {
-        movement.SetInAir(false);
+
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Jumping");
         startingVelocity = movement.velocity * .75f;
-        movement.SetInAir(true);
+        movement.AddVerticalVelocity(jumpForce);
     }
 
     Vector3 newVelocity;
@@ -29,7 +29,6 @@ public class Jumping : MovementState
     {
         newVelocity = GetAgentMovementInput();
         movement.SetHorizontalVelocity(startingVelocity + newVelocity * airMoveSpeed);
-        movement.SetVerticalVelocity(jumpForce);
         RotateAgentModelToDirection(newVelocity);
     }
 }

@@ -24,7 +24,7 @@ public abstract class MovementState : State
     public Func<bool> FacingHighWall => () => movement.wallDetectorUpper.CollidingWith > 0;
     public Func<bool> FacingLowWall => () => movement.wallDetectorLower.CollidingWith > 0;
     public Func<bool> OtherSideOfVaultOpen => () => movement.vaultOtherSideDetector.CollidingWith == 0;
-    public Func<bool> Rising => () => charController.velocity.y > 0;
+    public Func<bool> Rising => () => charController.velocity.y > .01f;
     public Func<bool> Falling => () => charController.velocity.y < -.1f;
 
     public MovementState(GameObject gameObject) : base(gameObject)

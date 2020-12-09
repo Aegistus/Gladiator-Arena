@@ -15,7 +15,7 @@ public class Falling : MovementState
 
     public override void AfterExecution()
     {
-        movement.SetInAir(false);
+
     }
 
     public override void BeforeExecution()
@@ -23,7 +23,6 @@ public class Falling : MovementState
         Debug.Log("Falling");
         //anim.Play(animationNames[0]);
         startingVelocity = movement.velocity;
-        movement.SetInAir(true);
     }
 
     Vector3 newVelocity;

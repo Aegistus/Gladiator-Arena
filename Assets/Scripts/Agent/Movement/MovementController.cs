@@ -19,7 +19,7 @@ public class MovementController : MonoBehaviour
 
     public StateMachine StateMachine { get; private set; }
     private CharacterController charController;
-    private bool inAir = false;
+    private float verticalVelocity;
 
     private void Awake()
     {
@@ -42,30 +42,40 @@ public class MovementController : MonoBehaviour
 
     public void SetHorizontalVelocity(Vector3 velocity)
     {
-        this.velocity = velocity;
+        this.velocity = new Vector3(velocity.x, this.velocity.y, velocity.z);
+    }
+
+    public void AddVerticalVelocity(float vertVelocity)
+    {
+        verticalVelocity += vertVelocity;
     }
 
     public void SetVerticalVelocity(float vertVelocity)
     {
-        velocity.y = vertVelocity;
+        verticalVelocity = vertVelocity;
     }
 
-    public void SetInAir(bool inAir)
+    public bool IsGrounded()
     {
-        this.inAir = inAir;
+        if (Physics.BoxCast(transform.position, Vector3.one / 10, Vector3.down, transform.rotation, .5f, groundLayer))
+        {
+            return true;
+        }
+        return false;
     }
 
     private void Update()
     {
-        StateMachine.ExecuteState();
-        if (inAir)
+        if (!IsGrounded())
         {
-            velocity.y += -9.8f * Time.deltaTime;
+            verticalVelocity += -9.8f * Time.deltaTime;
         }
         else
         {
-            velocity.y = 0;
+            verticalVelocity = 0;
         }
+        StateMachine.ExecuteState();
+        velocity.y = verticalVelocity;
         charController.Move(velocity * Time.deltaTime);
     }
 }
