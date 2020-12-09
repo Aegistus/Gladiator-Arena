@@ -76,6 +76,9 @@ public class MovementController : MonoBehaviour
         }
         StateMachine.ExecuteState();
         velocity.y = verticalVelocity;
-        charController.Move(velocity * Time.deltaTime);
+        if (charController.enabled)
+        {
+            charController.Move(velocity * Time.deltaTime);
+        }
     }
 }

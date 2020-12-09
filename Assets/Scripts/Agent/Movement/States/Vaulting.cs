@@ -10,7 +10,7 @@ public class Vaulting : MovementState
     float timerMax = 1f;
     float timer;
 
-    float vaultSpeed = .02f;
+    float vaultSpeed = .2f;
 
     public Vaulting(GameObject gameObject) : base(gameObject)
     {
@@ -23,15 +23,15 @@ public class Vaulting : MovementState
         {
             transform.position += movement.agentModel.forward * .25f;
         }
-        charController.detectCollisions = true;
+        charController.enabled = true;
     }
 
     public override void BeforeExecution()
     {
         timer = 0;
-        charController.detectCollisions = false;
+        charController.enabled = false;
     }
-    
+
     public override void DuringExecution()
     {
         transform.Translate(movement.agentModel.forward * vaultSpeed * Time.deltaTime);

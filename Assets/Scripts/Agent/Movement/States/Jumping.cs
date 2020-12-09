@@ -2,7 +2,7 @@
 
 public class Jumping : MovementState
 {
-    private float jumpForce = 7f;
+    private float jumpForce = 5f;
     private float airMoveSpeed = 2f;
     Vector3 startingVelocity;
 

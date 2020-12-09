@@ -19,8 +19,9 @@ public class Climbing : MovementState
     {
         if (TimerUp())
         {
-            transform.position += (movement.agentModel.forward) + (Vector3.up * .8f);
+            transform.position += movement.agentModel.forward + (Vector3.up * 1.4f);
         }
+        charController.enabled = true;
     }
 
     RaycastHit rayHit;
@@ -35,11 +36,13 @@ public class Climbing : MovementState
         //    Debug.Log("Moving transform to wall");
         //}
         timer = 0;
+        transform.position += movement.agentModel.forward * .2f;
+        charController.enabled = false;
     }
 
     public override void DuringExecution()
     {
-        movement.SetHorizontalVelocity(movement.agentModel.forward * 3f);
+        //movement.SetHorizontalVelocity(movement.agentModel.forward * 3f);
         timer += Time.deltaTime;
     }
 }
