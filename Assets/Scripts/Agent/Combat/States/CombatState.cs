@@ -8,10 +8,6 @@ public abstract class CombatState : State
     protected AgentController agentController;
     protected CharacterController charController;
 
-    protected float timer;
-    protected float timerMax;
-
-    public Func<bool> TimerComplete => () => timer >= timerMax;
     public Func<bool> AttackInput => () => agentController.Attack;
     public Func<bool> RightSlashInput => () => agentController.AttackDirection == AttackDirection.Right;
     public Func<bool> LeftSlashInput => () => agentController.AttackDirection == AttackDirection.Left;

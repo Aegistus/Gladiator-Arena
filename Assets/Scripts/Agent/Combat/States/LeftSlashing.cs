@@ -6,6 +6,6 @@ public class LeftSlashing : AttackingState
 {
     public LeftSlashing(GameObject gameObject) : base(gameObject)
     {
-        timerMax = 2f;
+
     }
 }

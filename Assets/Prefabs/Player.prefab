@@ -2791,6 +2791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6801081108730475623}
   - component: {fileID: 6801081108737424525}
+  - component: {fileID: 3458643720057974785}
   - component: {fileID: 3451515371363561835}
   m_Layer: 0
   m_Name: Agent Model
@@ -2840,6 +2841,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3458643720057974785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801081108730128225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d211088a6375c4e9012713a1bb0267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &3451515371363561835
 CapsuleCollider:
   m_ObjectHideFlags: 0

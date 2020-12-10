@@ -51,7 +51,6 @@ public class PlayerController : AgentController
         {
             AttackDirection = AttackDirection.Stab;
         }
-        print(angle);
     }
 
     public override void OnStartLocalPlayer()
