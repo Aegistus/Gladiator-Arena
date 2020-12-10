@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReleaseState : CombatState
+public class AttackingState : CombatState
 {
-    public ReleaseState(GameObject gameObject) : base(gameObject)
+    public AttackingState(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(ReadyState), TimerComplete));
     }
 
     public override void AfterExecution()
     {
-
+        charController.enabled = true;
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Releasing");
-        timerMax = 1f;
         timer = 0;
+        charController.enabled = false;
     }
 
     public override void DuringExecution()

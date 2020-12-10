@@ -5,10 +5,11 @@ using UnityEngine;
 public class ReadyState : CombatState
 {
 
-
     public ReadyState(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(ReleaseState), AttackInput));
+        transitionsTo.Add(new Transition(typeof(RightSlashing), AttackInput, RightSlashInput));
+        transitionsTo.Add(new Transition(typeof(LeftSlashing), AttackInput, LeftSlashInput));
+        transitionsTo.Add(new Transition(typeof(Stabbing), AttackInput, StabInput));
     }
 
     public override void AfterExecution()

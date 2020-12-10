@@ -5,6 +5,7 @@ using Mirror;
 
 public abstract class AgentController : NetworkBehaviour
 {
+    public AttackDirection AttackDirection { get; protected set; }
     public bool Attack { get; protected set; }
     public bool Block { get; protected set; }
     public bool Forwards { get; protected set; }

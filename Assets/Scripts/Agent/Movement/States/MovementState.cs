@@ -8,6 +8,7 @@ public abstract class MovementState : State
     protected LayerMask groundLayer;
     protected AgentMovement movement;
     protected AgentController controller;
+    protected AgentCombat combat;
     protected CharacterController charController;
     protected List<string> animationNames = new List<string>();
     protected List<string> soundNames = new List<string>();

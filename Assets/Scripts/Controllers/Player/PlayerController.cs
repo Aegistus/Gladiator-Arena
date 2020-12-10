@@ -36,6 +36,22 @@ public class PlayerController : AgentController
         {
             equipment.GoToNextPrimaryEquipment();
         }
+        float xChange = Input.GetAxis("Mouse X");
+        float yChange = Input.GetAxis("Mouse Y");
+        float angle = Mathf.Rad2Deg * Mathf.Atan2(yChange, xChange);
+        if (angle < 90 && angle > -30)
+        {
+            AttackDirection = AttackDirection.Right;
+        }
+        else if (angle > 90 || angle < -150)
+        {
+            AttackDirection = AttackDirection.Left;
+        }
+        else if (angle > -150 && angle < -30)
+        {
+            AttackDirection = AttackDirection.Stab;
+        }
+        print(angle);
     }
 
     public override void OnStartLocalPlayer()

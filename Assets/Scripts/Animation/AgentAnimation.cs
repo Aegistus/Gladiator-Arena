@@ -21,7 +21,7 @@ public class AgentAnimation : MonoBehaviour
     private int slidingHash = Animator.StringToHash("Sliding");
     private int leftSlashHash = Animator.StringToHash("LeftSlashing");
     private int rightSlashHash = Animator.StringToHash("RightSlashing");
-    private int stabbing = Animator.StringToHash("Stabbing");
+    private int stabbingHash = Animator.StringToHash("Stabbing");
 
     private Dictionary<Type, int> stateToHash;
     private Dictionary<AgentEquipment.EquipmentStance, int> stanceLayers;
@@ -46,7 +46,9 @@ public class AgentAnimation : MonoBehaviour
             {typeof(Climbing), climbingHash},
             {typeof(Vaulting), vaultingHash},
             {typeof(Sliding), slidingHash },
-            {typeof(ReleaseState), rightSlashHash },
+            {typeof(Stabbing),  stabbingHash},
+            {typeof(RightSlashing),  rightSlashHash},
+            {typeof(LeftSlashing),  leftSlashHash},
         };
         stanceLayers = new Dictionary<AgentEquipment.EquipmentStance, int>()
         {
