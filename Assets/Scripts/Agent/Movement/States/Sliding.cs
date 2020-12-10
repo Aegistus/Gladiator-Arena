@@ -10,7 +10,7 @@ public class Sliding : MovementState
     float timerMax = 1.1f;
     float timer;
 
-    float slideSpeed = 12f;
+    float slideSpeed = 8f;
 
     public Sliding(GameObject gameObject) : base(gameObject)
     {

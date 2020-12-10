@@ -19,6 +19,8 @@ public class PlayerController : Controller
         {
             return;
         }
+        Attack = Input.GetMouseButton(0);
+        Block = Input.GetMouseButton(1);
         Forwards = Input.GetKey(KeyCode.W);
         Backwards = Input.GetKey(KeyCode.S);
         Left = Input.GetKey(KeyCode.A);

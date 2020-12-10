@@ -5,6 +5,8 @@ using Mirror;
 
 public abstract class Controller : NetworkBehaviour
 {
+    public bool Attack { get; protected set; }
+    public bool Block { get; protected set; }
     public bool Forwards { get; protected set; }
     public bool Backwards { get; protected set; }
     public bool Left { get; protected set; }
