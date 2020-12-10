@@ -10,8 +10,7 @@ public class Equipment : MonoBehaviour
     }
 
     public Usage usage;
-    public string animationLayer;
-
+    
     public bool Equipped { get; private set; }
 
     public void Equip(Transform hand)

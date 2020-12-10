@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AgentEquipment : MonoBehaviour
 {
@@ -8,19 +9,21 @@ public class AgentEquipment : MonoBehaviour
     public Transform secondaryHand;
     public int maxCarriedEquipment = 4;
 
+    public event Action<EquipmentStance> OnStanceChange;
+
     public Equipment PrimaryEquipped { get; private set; }
     public Equipment SecondaryEquipped { get; private set; }
+    public EquipmentStance CurrentStance { get; private set; }
 
     public List<Equipment> primaryEquipment;
     public List<Equipment> secondaryEquipment;
 
-    private AgentAnimation agentAnim;
     private int primaryIndex;
     private int secondaryIndex;
 
-    private void Awake()
+    public enum EquipmentStance
     {
-        agentAnim = GetComponentInChildren<AgentAnimation>();
+        TwoHanded, OneHandedShield
     }
 
     public void GoToNextPrimaryEquipment()
@@ -45,7 +48,7 @@ public class AgentEquipment : MonoBehaviour
         {
             PrimaryEquipped = null;
         }
-        agentAnim.ChangeAnimationType(PrimaryEquipped.animationLayer);
+        UpdateCurrentEquipmentStance();
     }
 
     public void GoToNextSecondaryEquipment()
@@ -68,6 +71,20 @@ public class AgentEquipment : MonoBehaviour
                 SecondaryEquipped = null;
             }
         }
+        UpdateCurrentEquipmentStance();
+    }
+
+    public void UpdateCurrentEquipmentStance()
+    {
+        if (PrimaryEquipped.usage == Equipment.Usage.Both)
+        {
+            CurrentStance = EquipmentStance.TwoHanded;
+        }
+        else
+        {
+            CurrentStance = EquipmentStance.OneHandedShield;
+        }
+        OnStanceChange?.Invoke(CurrentStance);
     }
 
     public void PickupEquipment(Equipment newEquipment)
