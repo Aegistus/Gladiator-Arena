@@ -16,9 +16,9 @@ public abstract class OnGroundState : MovementState
 
     protected void KeepGrounded()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out rayHit, .75f, groundLayer))
+        if (Physics.Raycast(transform.position, Vector3.down, out rayHit, .75f, groundLayer) && Not(Jump)())
         {
-            transform.position = rayHit.point + Vector3.up * .5f;
+            movement.SetVerticalVelocity(-10f);
         }
     }
 }

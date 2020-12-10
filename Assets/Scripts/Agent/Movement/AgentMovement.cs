@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class MovementController : MonoBehaviour
+public class AgentMovement : MonoBehaviour
 {
     public LayerMask groundLayer;
     public Transform lookDirection;
@@ -15,6 +15,7 @@ public class MovementController : MonoBehaviour
     public WallDetector vaultOtherSideDetector;
 
     public MovementState CurrentState => (MovementState)StateMachine.CurrentState;
+    [HideInInspector]
     public Vector3 velocity;
 
     public StateMachine StateMachine { get; private set; }

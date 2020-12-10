@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public abstract class Controller : NetworkBehaviour
+public abstract class AgentController : NetworkBehaviour
 {
     public bool Attack { get; protected set; }
     public bool Block { get; protected set; }

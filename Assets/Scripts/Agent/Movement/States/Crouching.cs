@@ -17,6 +17,7 @@ public class Crouching : MovementState
     public override void BeforeExecution()
     {
         Debug.Log("Crouching");
+        movement.SetHorizontalVelocity(Vector3.zero);
     }
 
     public override void DuringExecution()

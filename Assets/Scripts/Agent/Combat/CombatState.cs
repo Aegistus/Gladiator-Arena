@@ -5,7 +5,7 @@ using System;
 
 public abstract class CombatState : State
 {
-    protected Controller agentController;
+    protected AgentController agentController;
 
     protected float timer;
     protected float timerMax;
@@ -15,6 +15,6 @@ public abstract class CombatState : State
 
     protected CombatState(GameObject gameObject) : base(gameObject)
     {
-        agentController = gameObject.GetComponent<Controller>();
+        agentController = gameObject.GetComponent<AgentController>();
     }
 }

@@ -42,7 +42,6 @@ public class Climbing : MovementState
 
     public override void DuringExecution()
     {
-        //movement.SetHorizontalVelocity(movement.agentModel.forward * 3f);
         timer += Time.deltaTime;
     }
 }

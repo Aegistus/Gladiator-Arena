@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : Controller
+public class PlayerController : AgentController
 {
     public GameObject playerCam;
 

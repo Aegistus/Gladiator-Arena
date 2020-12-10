@@ -6,7 +6,7 @@ using System;
 public class AgentAnimation : MonoBehaviour
 {
     private Animator anim;
-    private MovementController movement;
+    private AgentMovement movement;
 
     private int runningHash = Animator.StringToHash("Running");
     private int idleHash = Animator.StringToHash("Idling");
@@ -39,7 +39,7 @@ public class AgentAnimation : MonoBehaviour
             {typeof(Sliding), slidingHash },
         };
         anim = GetComponentInChildren<Animator>();
-        movement = GetComponent<MovementController>();
+        movement = GetComponent<AgentMovement>();
     }
 
     private void Start()

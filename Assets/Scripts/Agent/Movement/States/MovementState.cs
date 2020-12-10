@@ -6,19 +6,17 @@ using UnityEngine;
 public abstract class MovementState : State
 {
     protected LayerMask groundLayer;
-    protected MovementController movement;
-    protected Controller controller;
+    protected AgentMovement movement;
+    protected AgentController controller;
     protected CharacterController charController;
     protected List<string> animationNames = new List<string>();
     protected List<string> soundNames = new List<string>();
 
     public Func<bool> Move => () => controller.Forwards || controller.Backwards || controller.Right || controller.Left;
     public Func<bool> Jump => () => controller.Jump;
-    public Func<bool> PrimaryAction => () => Input.GetMouseButtonDown(0);
-    //public Func<bool> RightClick => () => Input.GetMouseButton(1);
     public Func<bool> Run => () => controller.Run;
     public Func<bool> Crouch => () => controller.Crouch;
-    public Func<bool> OnGround => () => IsGrounded();
+    public Func<bool> OnGround => () => movement.IsGrounded();
     public Func<bool> NextToWall => () => IsNextToWall();
     public Func<bool> LedgeInReach => () => movement.ledgeDetector.CollidingWith == 0;
     public Func<bool> FacingHighWall => () => movement.wallDetectorUpper.CollidingWith > 0;
@@ -29,19 +27,10 @@ public abstract class MovementState : State
 
     public MovementState(GameObject gameObject) : base(gameObject)
     {
-        movement = gameObject.GetComponent<MovementController>();
-        controller = gameObject.GetComponent<Controller>();
-        groundLayer = gameObject.GetComponent<MovementController>().groundLayer;
+        movement = gameObject.GetComponent<AgentMovement>();
+        controller = gameObject.GetComponent<AgentController>();
+        groundLayer = movement.groundLayer;
         charController = gameObject.GetComponent<CharacterController>();
-    }
-
-    private bool IsGrounded()
-    {
-        if (Physics.BoxCast(transform.position, Vector3.one / 5, Vector3.down, transform.rotation, .5f, groundLayer))
-        {
-            return true;
-        }
-        return false;
     }
 
     private bool IsNextToWall()
