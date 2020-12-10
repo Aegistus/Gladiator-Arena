@@ -25,6 +25,7 @@ public abstract class MovementState : State
     public Func<bool> OtherSideOfVaultOpen => () => movement.vaultOtherSideDetector.CollidingWith == 0;
     public Func<bool> Rising => () => charController.velocity.y > .01f;
     public Func<bool> Falling => () => charController.velocity.y < -.1f;
+    public Func<bool> Attacking => () => combat.StateMachine.CurrentState is AttackingState;
 
     public MovementState(GameObject gameObject) : base(gameObject)
     {
@@ -32,6 +33,7 @@ public abstract class MovementState : State
         controller = gameObject.GetComponent<AgentController>();
         groundLayer = movement.groundLayer;
         charController = gameObject.GetComponent<CharacterController>();
+        combat = gameObject.GetComponent<AgentCombat>();
     }
 
     private bool IsNextToWall()

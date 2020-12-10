@@ -8,7 +8,6 @@ public class Walking : OnGroundState
 
     public Walking(GameObject gameObject) : base(gameObject)
     {
-        animationNames.Add("Run");
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move)));
         transitionsTo.Add(new Transition(typeof(Sprinting), Run));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));

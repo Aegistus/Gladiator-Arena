@@ -9,7 +9,7 @@ public class Idling : OnGroundState
     public Idling(GameObject gameObject) : base(gameObject)
     {
         animationNames.Add("Idle");
-        transitionsTo.Add(new Transition(typeof(Walking), Move));
+        transitionsTo.Add(new Transition(typeof(Walking), Move, Not(Attacking)));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
     }
 
