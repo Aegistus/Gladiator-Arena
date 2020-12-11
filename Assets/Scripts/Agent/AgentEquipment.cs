@@ -21,6 +21,16 @@ public class AgentEquipment : MonoBehaviour
     private int primaryIndex;
     private int secondaryIndex;
 
+    private Animator anim;
+    private Dictionary<EquipmentStance, int> equipmentStanceLayers = new Dictionary<EquipmentStance, int>();
+
+    private void Start()
+    {
+        anim = GetComponentInChildren<Animator>();
+        equipmentStanceLayers.Add(EquipmentStance.TwoHanded, anim.GetLayerIndex("Two Handed"));
+        equipmentStanceLayers.Add(EquipmentStance.OneHandedShield, anim.GetLayerIndex("One Handed Shield"));
+    }
+
     public enum EquipmentStance
     {
         TwoHanded, OneHandedShield
@@ -84,6 +94,12 @@ public class AgentEquipment : MonoBehaviour
         {
             CurrentStance = EquipmentStance.OneHandedShield;
         }
+        // set all stance layers to 0 weight
+        foreach (var stance in equipmentStanceLayers)
+        {
+            anim.SetLayerWeight(stance.Value, 0);
+        }
+        anim.SetLayerWeight(equipmentStanceLayers[CurrentStance], 1);
         OnStanceChange?.Invoke(CurrentStance);
     }
 

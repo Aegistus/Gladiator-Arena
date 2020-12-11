@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Crouching : MovementState
 {
+    float crouchHeight = .5f;
+
     public Crouching(GameObject gameObject) : base(gameObject)
     {
         animationHash = Animator.StringToHash("Crouching");
@@ -13,6 +15,7 @@ public class Crouching : MovementState
     public override void AfterExecution()
     {
         anim.SetBool(animationHash, false);
+        //transform.position += Vector3.down * crouchHeight;
     }
 
     public override void BeforeExecution()
@@ -20,6 +23,7 @@ public class Crouching : MovementState
         Debug.Log("Crouching");
         anim.SetBool(animationHash, true);
         movement.SetHorizontalVelocity(Vector3.zero);
+        //transform.position -= Vector3.down * crouchHeight;
     }
 
     public override void DuringExecution()
