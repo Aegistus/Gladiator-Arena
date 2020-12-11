@@ -8,21 +8,24 @@ public class Walking : OnGroundState
 
     public Walking(GameObject gameObject) : base(gameObject)
     {
+        animationHash = Animator.StringToHash("Walking");
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move)));
-        transitionsTo.Add(new Transition(typeof(Sprinting), Run));
+        transitionsTo.Add(new Transition(typeof(Running), Run));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
     }
 
     public override void AfterExecution()
     {
-        if (movement.velocity.y > 0)
-        {
-            movement.AddVerticalVelocity(0);
-        }
+        //if (movement.velocity.y > 0)
+        //{
+        //    movement.AddVerticalVelocity(0);
+        //}
+        anim.SetBool(animationHash, false);
     }
 
     public override void BeforeExecution()
     {
+        anim.SetBool(animationHash, true);
         movement.SetHorizontalVelocity(Vector3.zero);
     }
 

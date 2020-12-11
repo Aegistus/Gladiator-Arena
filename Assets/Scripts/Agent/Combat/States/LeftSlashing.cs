@@ -6,6 +6,6 @@ public class LeftSlashing : AttackingState
 {
     public LeftSlashing(GameObject gameObject) : base(gameObject)
     {
-
+        animationHash = Animator.StringToHash("LeftSlashing");
     }
 }

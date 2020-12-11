@@ -32,7 +32,7 @@ public class AgentMovement : MonoBehaviour
             {typeof(Walking), new Walking(gameObject) },
             {typeof(Jumping), new Jumping(gameObject) },
             {typeof(Falling), new Falling(gameObject) },
-            {typeof(Sprinting), new Sprinting(gameObject) },
+            {typeof(Running), new Running(gameObject) },
             {typeof(Crouching), new Crouching(gameObject) },
             {typeof(Climbing), new Climbing(gameObject) },
             {typeof(Vaulting), new Vaulting(gameObject) },

@@ -26,7 +26,8 @@ public class AgentAnimation : MonoBehaviour
     private Dictionary<Type, int> stateToHash;
     private Dictionary<AgentEquipment.EquipmentStance, int> stanceLayers;
 
-    private int prevStateHash = 0;
+    private int prevUpperBodyHash = 0;
+    private int prevLowerBodyHash = 0;
     private Type nextStateType;
 
     private void Awake()
@@ -37,7 +38,7 @@ public class AgentAnimation : MonoBehaviour
         equipment = GetComponent<AgentEquipment>();
         stateToHash = new Dictionary<Type, int>()
         {
-            {typeof(Sprinting), runningHash },
+            {typeof(Running), runningHash },
             {typeof(Idling), idleHash },
             {typeof(Walking), walkingHash },
             {typeof(Jumping), jumpingHash },
@@ -59,8 +60,8 @@ public class AgentAnimation : MonoBehaviour
 
     private void Start()
     {
-        movement.StateMachine.OnStateChange += ChangeAnimationState;
-        combat.StateMachine.OnStateChange += ChangeAnimationState;
+        movement.StateMachine.OnStateChange += SetLowerBodyAnimation;
+        combat.StateMachine.OnStateChange += SetUpperBodyAnimation;
         equipment.OnStanceChange += ChangeAnimationLayer;
     }
 
@@ -73,17 +74,36 @@ public class AgentAnimation : MonoBehaviour
         anim.SetLayerWeight(stanceLayers[stance], 1);
     }
 
-    public void ChangeAnimationState(State newState)
+    public void SetFullBodyAnimation()
+    {
+
+    }
+
+    public void SetUpperBodyAnimation(State newState)
     {
         nextStateType = newState.GetType();
-        if (prevStateHash != 0)
+        if (prevUpperBodyHash != 0)
         {
-            anim.SetBool(prevStateHash, false);
+            anim.SetBool(prevUpperBodyHash, false);
         }
         if (stateToHash.ContainsKey(nextStateType))
         {
             anim.SetBool(stateToHash[nextStateType], true);
-            prevStateHash = stateToHash[nextStateType];
+            prevUpperBodyHash = stateToHash[nextStateType];
+        }
+    }
+
+    public void SetLowerBodyAnimation(State newState)
+    {
+        nextStateType = newState.GetType();
+        if (prevLowerBodyHash != 0)
+        {
+            anim.SetBool(prevLowerBodyHash, false);
+        }
+        if (stateToHash.ContainsKey(nextStateType))
+        {
+            anim.SetBool(stateToHash[nextStateType], true);
+            prevLowerBodyHash = stateToHash[nextStateType];
         }
     }
 

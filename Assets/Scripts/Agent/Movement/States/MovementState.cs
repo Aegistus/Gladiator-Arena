@@ -5,12 +5,15 @@ using UnityEngine;
 
 public abstract class MovementState : State
 {
+    protected Animator anim;
+    protected int animationHash;
+    protected int fullBodyLayer;
+
     protected LayerMask groundLayer;
     protected AgentMovement movement;
     protected AgentController controller;
     protected AgentCombat combat;
     protected CharacterController charController;
-    protected List<string> animationNames = new List<string>();
     protected List<string> soundNames = new List<string>();
 
     public Func<bool> Move => () => controller.Forwards || controller.Backwards || controller.Right || controller.Left;
@@ -34,6 +37,8 @@ public abstract class MovementState : State
         groundLayer = movement.groundLayer;
         charController = gameObject.GetComponent<CharacterController>();
         combat = gameObject.GetComponent<AgentCombat>();
+        anim = gameObject.GetComponentInChildren<Animator>();
+        fullBodyLayer = anim.GetLayerIndex("Full Body");
     }
 
     private bool IsNextToWall()

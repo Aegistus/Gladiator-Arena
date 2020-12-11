@@ -14,6 +14,7 @@ public class Vaulting : MovementState
 
     public Vaulting(GameObject gameObject) : base(gameObject)
     {
+        animationHash = Animator.StringToHash("Vaulting");
         transitionsTo.Add(new Transition(typeof(Idling), TimerUp));
     }
 
@@ -24,10 +25,14 @@ public class Vaulting : MovementState
             transform.position += movement.agentModel.forward * .25f;
         }
         charController.enabled = true;
+        anim.SetLayerWeight(fullBodyLayer, 0);
+        anim.SetBool(animationHash, false);
     }
 
     public override void BeforeExecution()
     {
+        anim.SetLayerWeight(fullBodyLayer, 1);
+        anim.SetBool(animationHash, true);
         timer = 0;
         charController.enabled = false;
     }

@@ -28,13 +28,13 @@ public class AttackingState : CombatState
 
     public override void AfterExecution()
     {
-        charController.enabled = true;
+        anim.SetBool(animationHash, false);
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Releasing");
-        charController.enabled = false;
+        anim.SetBool(animationHash, true);
         animationFinished = false;
     }
 

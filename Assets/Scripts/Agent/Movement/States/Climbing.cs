@@ -12,6 +12,7 @@ public class Climbing : MovementState
 
     public Climbing(GameObject gameObject) : base(gameObject)
     {
+        animationHash = Animator.StringToHash("Climbing");
         transitionsTo.Add(new Transition(typeof(Idling), TimerUp));
     }
 
@@ -22,19 +23,16 @@ public class Climbing : MovementState
             transform.position += movement.agentModel.forward + (Vector3.up * 1.4f);
         }
         charController.enabled = true;
+        anim.SetLayerWeight(fullBodyLayer, 0);
+        anim.SetBool(animationHash, false);
     }
 
     RaycastHit rayHit;
     public override void BeforeExecution()
     {
         Debug.Log("Climbing");
-
-        //if (Physics.Raycast(transform.position, movement.agentModel.forward, out rayHit, 10f, groundLayer))
-        //{
-        //    transform.position = rayHit.point;
-        //    transform.position += movement.agentModel.forward * .1f;
-        //    Debug.Log("Moving transform to wall");
-        //}
+        anim.SetLayerWeight(fullBodyLayer, 1);
+        anim.SetBool(animationHash, true);
         timer = 0;
         transform.position += movement.agentModel.forward * .2f;
         charController.enabled = false;

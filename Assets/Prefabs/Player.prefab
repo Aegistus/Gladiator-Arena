@@ -403,7 +403,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4828917951006747455}
   - component: {fileID: 4828917951006747450}
-  - component: {fileID: 2856627226801548590}
   - component: {fileID: 1680635285654721201}
   - component: {fileID: 642693443397125044}
   - component: {fileID: 8562547020817679960}
@@ -453,18 +452,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   playerCam: {fileID: 4828917950998017885}
---- !u!114 &2856627226801548590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4828917951006747454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 593eac2fd581df644a7565d8f50a5b4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1680635285654721201
 MonoBehaviour:
   m_ObjectHideFlags: 0

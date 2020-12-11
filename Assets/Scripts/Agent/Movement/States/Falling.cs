@@ -9,19 +9,21 @@ public class Falling : MovementState
 
     public Falling(GameObject gameObject) : base(gameObject)
     {
-        animationNames.Add("Fall");
+        animationHash = Animator.StringToHash("Falling");
         transitionsTo.Add(new Transition(typeof(Idling), Not(Falling), OnGround));
     }
 
     public override void AfterExecution()
     {
-
+        anim.SetLayerWeight(fullBodyLayer, 0);
+        anim.SetBool(animationHash, false);
     }
 
     public override void BeforeExecution()
     {
         Debug.Log("Falling");
-        //anim.Play(animationNames[0]);
+        anim.SetLayerWeight(fullBodyLayer, 1);
+        anim.SetBool(animationHash, true);
         startingVelocity = movement.velocity;
     }
 

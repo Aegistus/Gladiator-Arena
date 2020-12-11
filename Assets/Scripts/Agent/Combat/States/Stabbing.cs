@@ -6,7 +6,7 @@ public class Stabbing : AttackingState
 {
     public Stabbing(GameObject gameObject) : base(gameObject)
     {
-
+        animationHash = Animator.StringToHash("Stabbing");
     }
 
 }

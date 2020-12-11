@@ -14,16 +14,20 @@ public class Sliding : MovementState
 
     public Sliding(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Sprinting), TimerUp));
+        animationHash = Animator.StringToHash("Sliding");
+        transitionsTo.Add(new Transition(typeof(Running), TimerUp));
     }
 
     public override void AfterExecution()
     {
-
+        anim.SetLayerWeight(fullBodyLayer, 0);
+        anim.SetBool(animationHash, false);
     }
 
     public override void BeforeExecution()
     {
+        anim.SetLayerWeight(fullBodyLayer, 1);
+        anim.SetBool(animationHash, true);
         movement.SetHorizontalVelocity(movement.agentModel.forward * slideSpeed);
         timer = 0;
     }
