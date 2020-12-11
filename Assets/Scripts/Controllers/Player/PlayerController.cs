@@ -6,13 +6,6 @@ public class PlayerController : AgentController
 {
     public GameObject playerCam;
 
-    private AgentEquipment equipment;
-
-    private void Start()
-    {
-        equipment = GetComponent<AgentEquipment>();
-    }
-
     private void Update()
     {
         if (!isLocalPlayer)
@@ -28,14 +21,8 @@ public class PlayerController : AgentController
         Run = Input.GetKey(KeyCode.LeftShift);
         Jump = Input.GetKey(KeyCode.Space);
         Crouch = Input.GetKey(KeyCode.LeftControl);
-        if (Input.mouseScrollDelta.y > 0)
-        {
-            equipment.GoToNextSecondaryEquipment();
-        }
-        if (Input.mouseScrollDelta.y < 0)
-        {
-            equipment.GoToNextPrimaryEquipment();
-        }
+        SwitchPrimary = Input.mouseScrollDelta.y < 0;
+        SwitchSecondary = Input.mouseScrollDelta.y > 0;
         float xChange = Input.GetAxis("Mouse X");
         float yChange = Input.GetAxis("Mouse Y");
         float angle = Mathf.Rad2Deg * Mathf.Atan2(yChange, xChange);

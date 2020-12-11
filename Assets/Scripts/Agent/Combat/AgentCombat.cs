@@ -16,6 +16,8 @@ public class AgentCombat : MonoBehaviour
             {typeof(Stabbing), new Stabbing(gameObject) },
             {typeof(RightSlashing), new RightSlashing(gameObject) },
             {typeof(LeftSlashing), new LeftSlashing(gameObject) },
+            {typeof(EquippingPrimary), new EquippingPrimary(gameObject) },
+            {typeof(EquippingSecondary), new EquippingSecondary(gameObject) },
         };
         StateMachine.SetStates(states, typeof(ReadyState));
     }
