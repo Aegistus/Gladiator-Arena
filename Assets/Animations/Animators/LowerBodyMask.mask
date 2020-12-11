@@ -12,17 +12,17 @@ AvatarMask:
   - m_Path: 
     m_Weight: 1
   - m_Path: Character_Shieldmadien
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Character_Viking_Chief_01
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Character_Viking_Grunt_01
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Character_Viking_Grunt_02
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Character_Viking_Warrior_01
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Character_Viking_Warrior_02
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Root
     m_Weight: 1
   - m_Path: Root/Hips

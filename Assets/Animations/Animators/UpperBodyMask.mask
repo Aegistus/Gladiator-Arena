@@ -24,7 +24,7 @@ AvatarMask:
   - m_Path: Character_Viking_Warrior_02
     m_Weight: 1
   - m_Path: Root
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: Root/Hips
     m_Weight: 0
   - m_Path: Root/Hips/Item_Axe
