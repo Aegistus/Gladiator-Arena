@@ -13,6 +13,7 @@ public class AgentCombat : MonoBehaviour
         Dictionary<Type, State> states = new Dictionary<Type, State>()
         {
             {typeof(ReadyState), new ReadyState(gameObject) },
+            {typeof(Blocking), new Blocking(gameObject) },
             {typeof(Stabbing), new Stabbing(gameObject) },
             {typeof(RightSlashing), new RightSlashing(gameObject) },
             {typeof(LeftSlashing), new LeftSlashing(gameObject) },
