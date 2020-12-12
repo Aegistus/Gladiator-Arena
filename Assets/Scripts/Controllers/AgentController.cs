@@ -17,4 +17,5 @@ public abstract class AgentController : NetworkBehaviour
     public bool Run { get; protected set; }
     public bool SwitchPrimary { get; protected set; }
     public bool SwitchSecondary { get; protected set; }
+    public bool LockTarget { get; protected set; }
 }

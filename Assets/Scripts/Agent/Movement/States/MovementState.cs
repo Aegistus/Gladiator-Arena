@@ -55,12 +55,12 @@ public abstract class MovementState : State
     }
 
     Quaternion targetRotation, currentRotation;
-    protected void RotateAgentModelToDirection(Vector3 newVelocity, float rotationSpeed = 15f)
+    protected void RotateAgentModelToDirection(Vector3 position, float rotationSpeed = 15f)
     {
-        // make the agent's model rotate towards the direction of movement
+        // make the agent's model rotate towards the direction
         currentRotation = movement.agentModel.rotation;
-        movement.agentModel.LookAt(newVelocity + movement.agentModel.position);
-        targetRotation = movement.agentModel.rotation;
+        movement.agentModel.LookAt(movement.agentModel.position + position);
+        targetRotation.eulerAngles = new Vector3(0, movement.agentModel.eulerAngles.y, 0);
         movement.agentModel.rotation = currentRotation;
         movement.agentModel.rotation = Quaternion.Lerp(currentRotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
@@ -85,8 +85,6 @@ public abstract class MovementState : State
         {
             newVelocity += movement.lookDirection.right;
         }
-        newVelocity = newVelocity.normalized;
-        RotateAgentModelToDirection(newVelocity);
         newVelocity = newVelocity.normalized;
         return newVelocity;
     }

@@ -29,6 +29,9 @@ public class Idling : OnGroundState
 
     public override void DuringExecution()
     {
-
+        if (controller.LockTarget)
+        {
+            RotateAgentModelToDirection(movement.lookDirection.forward);
+        }
     }
 }

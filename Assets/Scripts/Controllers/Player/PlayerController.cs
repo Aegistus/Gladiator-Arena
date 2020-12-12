@@ -23,6 +23,14 @@ public class PlayerController : AgentController
         Crouch = Input.GetKey(KeyCode.LeftControl);
         SwitchPrimary = Input.mouseScrollDelta.y < 0;
         SwitchSecondary = Input.mouseScrollDelta.y > 0;
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            LockTarget = !LockTarget;
+            if (LockTarget)
+            {
+                print("Locked");
+            }
+        }
         float xChange = Input.GetAxis("Mouse X");
         float yChange = Input.GetAxis("Mouse Y");
         float angle = Mathf.Rad2Deg * Mathf.Atan2(yChange, xChange);

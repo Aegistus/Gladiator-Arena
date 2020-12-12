@@ -14,9 +14,10 @@ public class AgentMovement : MonoBehaviour
     public LedgeDetector ledgeDetector;
     public WallDetector vaultOtherSideDetector;
 
-    public MovementState CurrentState => (MovementState)StateMachine.CurrentState;
     [HideInInspector]
     public Vector3 velocity;
+
+    public MovementState CurrentState => (MovementState)StateMachine.CurrentState;
 
     public StateMachine StateMachine { get; private set; }
     private CharacterController charController;

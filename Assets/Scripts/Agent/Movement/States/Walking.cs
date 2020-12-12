@@ -5,6 +5,8 @@ using UnityEngine;
 public class Walking : OnGroundState
 {
     private float moveSpeed = 3f;
+    private int strafeLeftHash = Animator.StringToHash("StrafeLeft");
+    private int strafeRightHash = Animator.StringToHash("StrafeRight");
 
     public Walking(GameObject gameObject) : base(gameObject)
     {
@@ -34,7 +36,14 @@ public class Walking : OnGroundState
     {
         inputVelocity = GetAgentMovementInput();
         movement.SetHorizontalVelocity(inputVelocity * moveSpeed);
-        RotateAgentModelToDirection(inputVelocity);
+        if (controller.LockTarget)
+        {
+            RotateAgentModelToDirection(movement.lookDirection.forward);
+        }
+        else
+        {
+            RotateAgentModelToDirection(inputVelocity);
+        }
         KeepGrounded();
     }
 
