@@ -12,13 +12,14 @@ public class AgentEquipment : MonoBehaviour
 {
     public EquipmentSlot primarySlot;
     public EquipmentSlot secondarySlot;
-    public List<Equipment> availablePrimaryEquipment;
-    public List<Equipment> availableSecondaryEquipment;
+    public List<Equipment> carriedPrimaryEquipment;
+    public List<Equipment> carriedSecondaryEquipment;
 
     public AnimationStance CurrentStance { get; private set; }
 
-    private int primaryIndex;
-    private int secondaryIndex;
+    private Queue<Equipment> primaryEquipQueue = new Queue<Equipment>();
+    private Queue<Equipment> secondaryEquipQueue = new Queue<Equipment>();
+
     private Animator anim;
     private Dictionary<AnimationStance, int> equipmentStanceLayers = new Dictionary<AnimationStance, int>();
 
@@ -27,46 +28,35 @@ public class AgentEquipment : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         equipmentStanceLayers.Add(AnimationStance.TwoHanded, anim.GetLayerIndex("Two Handed"));
         equipmentStanceLayers.Add(AnimationStance.OneHandedShield, anim.GetLayerIndex("One Handed Shield"));
+        foreach (var primaryEquip in carriedPrimaryEquipment)
+        {
+            primaryEquipQueue.Enqueue(primaryEquip);
+        }
+        foreach (var secondaryEquip in carriedSecondaryEquipment)
+        {
+            secondaryEquipQueue.Enqueue(secondaryEquip);
+        }
     }
 
     public void GoToNextPrimaryEquipment()
     {
-        if (availablePrimaryEquipment.Count > 0)
+        primaryEquipQueue.Enqueue(primarySlot.UnEquip());
+        primarySlot.Equip(primaryEquipQueue.Dequeue());
+        if (primarySlot.CurrentlyEquipped.usage == Equipment.Usage.Both)
         {
-            primaryIndex++;
-            if (primaryIndex >= availablePrimaryEquipment.Count)
-            {
-                primaryIndex = 0;
-            }
-            // Unequip old equipment
-            availablePrimaryEquipment.Add(primarySlot.UnEquip());
-
-            primarySlot.Equip(availablePrimaryEquipment[primaryIndex]);
-            if (primarySlot.CurrentlyEquipped.usage == Equipment.Usage.Both)
-            {
-                availableSecondaryEquipment.Add(secondarySlot.UnEquip());
-            }
+            secondaryEquipQueue.Enqueue(secondarySlot.UnEquip());
         }
         UpdateCurrentEquipmentStance();
     }
 
     public void GoToNextSecondaryEquipment()
     {
-        if (primarySlot.CurrentlyEquipped?.usage != Equipment.Usage.Both)
+        if (primarySlot.CurrentlyEquipped.usage != Equipment.Usage.Both)
         {
-            if (availableSecondaryEquipment.Count > 0)
-            {
-                secondaryIndex++;
-                if (secondaryIndex >= availableSecondaryEquipment.Count)
-                {
-                    secondaryIndex = 0;
-                }
-
-                availableSecondaryEquipment.Add(secondarySlot.UnEquip());
-                secondarySlot.Equip(availableSecondaryEquipment[secondaryIndex]);
-            }
+            secondaryEquipQueue.Enqueue(secondarySlot.UnEquip());
+            secondarySlot.Equip(secondaryEquipQueue.Dequeue());
+            UpdateCurrentEquipmentStance();
         }
-        UpdateCurrentEquipmentStance();
     }
 
     public void UpdateCurrentEquipmentStance()
