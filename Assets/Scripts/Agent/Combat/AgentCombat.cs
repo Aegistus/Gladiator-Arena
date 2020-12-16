@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Mirror;
 
-public class AgentCombat : MonoBehaviour
+public class AgentCombat : NetworkBehaviour
 {
+    public float damage = 10f;
+
     public StateMachine StateMachine { get; private set; }
 
     private void Awake()
@@ -26,5 +29,15 @@ public class AgentCombat : MonoBehaviour
     private void Update()
     {
         StateMachine.ExecuteState();
+    }
+
+    [Command]
+    public void CMD_Damage(GameObject target, float damage)
+    {
+        AgentHealth health = target.GetComponent<AgentHealth>();
+        if (health != null)
+        {
+            health.RPC_Damage(damage);
+        }
     }
 }

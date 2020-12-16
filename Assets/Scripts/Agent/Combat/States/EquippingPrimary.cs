@@ -17,7 +17,7 @@ public class EquippingPrimary : CombatState
         animEvents = gameObject.GetComponentInChildren<AgentAnimEvents>();
     }
 
-    private void CheckForWhenToAddWeapon(EventType eventType)
+    private void EnableNewWeapon(EventType eventType)
     {
         if (eventType == EventType.Finish)
         {
@@ -29,14 +29,14 @@ public class EquippingPrimary : CombatState
     public override void AfterExecution()
     {
         anim.SetBool(animationHash, false);
-        animEvents.OnAnimationEvent -= CheckForWhenToAddWeapon;
+        animEvents.OnAnimationEvent -= EnableNewWeapon;
     }
 
     public override void BeforeExecution()
     {
         anim.SetBool(animationHash, true);
         animationDone = false;
-        animEvents.OnAnimationEvent += CheckForWhenToAddWeapon;
+        animEvents.OnAnimationEvent += EnableNewWeapon;
     }
 
     public override void DuringExecution()

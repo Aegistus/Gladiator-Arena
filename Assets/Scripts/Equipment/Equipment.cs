@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Equipment : MonoBehaviour
+public class Equipment : NetworkBehaviour
 {
     public enum Usage
     {
@@ -10,19 +11,4 @@ public class Equipment : MonoBehaviour
     }
 
     public Usage usage;
-    
-    public bool Equipped { get; private set; }
-
-    public void Equip(Transform hand)
-    {
-        transform.position = hand.position;
-        transform.rotation = hand.rotation;
-        transform.parent = hand;
-        gameObject.SetActive(true);
-    }
-
-    public void UnEquip()
-    {
-        gameObject.SetActive(false);
-    }
 }

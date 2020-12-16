@@ -46,6 +46,12 @@ public class PlayerController : AgentController
         {
             AttackDirection = AttackDirection.Stab;
         }
+
+        // TEST
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            GetComponent<AgentCombat>().CMD_Damage(gameObject, 10);
+        }
     }
 
     public override void OnStartLocalPlayer()
