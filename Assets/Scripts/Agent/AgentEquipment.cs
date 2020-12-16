@@ -40,22 +40,35 @@ public class AgentEquipment : MonoBehaviour
 
     public void GoToNextPrimaryEquipment()
     {
-        primaryEquipQueue.Enqueue(primarySlot.UnEquip());
-        primarySlot.Equip(primaryEquipQueue.Dequeue());
-        if (primarySlot.CurrentlyEquipped.usage == Equipment.Usage.Both)
+        if (primarySlot.CurrentlyEquipped != null)
+        {
+            primaryEquipQueue.Enqueue(primarySlot.UnEquip());
+        }
+        if (primaryEquipQueue.Count > 0)
+        {
+            primarySlot.Equip(primaryEquipQueue.Dequeue());
+            UpdateCurrentEquipmentStance();
+        }
+        // if primary uses both hands, unequip secondary
+        if (primarySlot.CurrentlyEquipped?.usage == Equipment.Usage.Both)
         {
             secondaryEquipQueue.Enqueue(secondarySlot.UnEquip());
         }
-        UpdateCurrentEquipmentStance();
     }
 
     public void GoToNextSecondaryEquipment()
     {
-        if (primarySlot.CurrentlyEquipped.usage != Equipment.Usage.Both)
+        if (primarySlot.CurrentlyEquipped?.usage != Equipment.Usage.Both)
         {
-            secondaryEquipQueue.Enqueue(secondarySlot.UnEquip());
-            secondarySlot.Equip(secondaryEquipQueue.Dequeue());
-            UpdateCurrentEquipmentStance();
+            if (secondarySlot.CurrentlyEquipped != null)
+            {
+                secondaryEquipQueue.Enqueue(secondarySlot.UnEquip());
+            }
+            if (secondaryEquipQueue.Count > 0)
+            {
+                secondarySlot.Equip(secondaryEquipQueue.Dequeue());
+                UpdateCurrentEquipmentStance();
+            }
         }
     }
 
