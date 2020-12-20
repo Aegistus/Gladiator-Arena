@@ -74,7 +74,7 @@ public class AgentEquipment : MonoBehaviour
 
     public void UpdateCurrentEquipmentStance()
     {
-        if (primarySlot.CurrentlyEquipped.usage == Equipment.Usage.Both)
+        if (primarySlot.CurrentlyEquipped?.usage == Equipment.Usage.Both)
         {
             CurrentStance = AnimationStance.TwoHanded;
         }
