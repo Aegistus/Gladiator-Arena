@@ -32,12 +32,12 @@ public class AgentCombat : NetworkBehaviour
     }
 
     [Command]
-    public void CMD_Damage(GameObject target, float damage)
+    public void Cmd_Damage(GameObject target, float damage)
     {
         AgentHealth health = target.GetComponent<AgentHealth>();
         if (health != null)
         {
-            health.RPC_Damage(damage);
+            health.Rpc_Damage(damage);
         }
     }
 }

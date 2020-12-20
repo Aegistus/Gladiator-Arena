@@ -19,12 +19,12 @@ public class AgentHealth : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void RPC_Damage(float damage)
+    public void Rpc_Damage(float damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            CMD_Kill();
+            Cmd_Kill();
         }
     }
 
@@ -35,7 +35,7 @@ public class AgentHealth : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void Heal(float health)
+    public void Rpc_Heal(float health)
     {
         currentHealth += health;
         if (currentHealth > maxHealth)
@@ -46,13 +46,13 @@ public class AgentHealth : NetworkBehaviour
     }
 
     [Command]
-    public void CMD_Kill()
+    public void Cmd_Kill()
     {
-        RPC_Kill();
+        Rpc_Kill();
     }
 
     [ClientRpc]
-    public void RPC_Kill()
+    public void Rpc_Kill()
     {
         gameObject.SetActive(false);
     }

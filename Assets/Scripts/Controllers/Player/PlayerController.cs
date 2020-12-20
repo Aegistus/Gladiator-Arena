@@ -50,7 +50,7 @@ public class PlayerController : AgentController
         // TEST
         if (Input.GetKeyDown(KeyCode.T))
         {
-            GetComponent<AgentCombat>().CMD_Damage(gameObject, 10);
+            GetComponent<AgentCombat>().Cmd_Damage(gameObject, 10);
         }
     }
 
