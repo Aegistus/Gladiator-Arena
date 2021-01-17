@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 
-public abstract class AgentController : NetworkBehaviour
+public abstract class AgentController : MonoBehaviour
 {
     public AttackDirection AttackDirection { get; protected set; }
     public bool Attack { get; protected set; }

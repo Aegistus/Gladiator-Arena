@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using Mirror;
 
-public class AgentCombat : NetworkBehaviour
+public class AgentCombat : MonoBehaviour
 {
     public float damage = 10f;
 
@@ -31,7 +30,6 @@ public class AgentCombat : NetworkBehaviour
         StateMachine.ExecuteState();
     }
 
-    [Command]
     public void Cmd_Damage(GameObject target, float damage)
     {
         AgentHealth health = target.GetComponent<AgentHealth>();

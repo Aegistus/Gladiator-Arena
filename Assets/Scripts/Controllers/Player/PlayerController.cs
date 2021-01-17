@@ -8,10 +8,6 @@ public class PlayerController : AgentController
 
     private void Update()
     {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
         Attack = Input.GetMouseButton(0);
         Block = Input.GetMouseButton(1);
         Forwards = Input.GetKey(KeyCode.W);
@@ -52,11 +48,5 @@ public class PlayerController : AgentController
         {
             GetComponent<AgentCombat>().Cmd_Damage(gameObject, 10);
         }
-    }
-
-    public override void OnStartLocalPlayer()
-    {
-        base.OnStartLocalPlayer();
-        playerCam.SetActive(true);
     }
 }

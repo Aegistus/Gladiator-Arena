@@ -1,16 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 using System;
 
-public class AgentHealth : NetworkBehaviour
+public class AgentHealth : MonoBehaviour
 {
     public float maxHealth = 100f;
 
     public float CurrentHealth { get { return currentHealth; } }
 
-    [SyncVar]
     private float currentHealth;
 
     private void Awake()
@@ -18,7 +16,6 @@ public class AgentHealth : NetworkBehaviour
         currentHealth = maxHealth;
     }
 
-    [ClientRpc]
     public void Rpc_Damage(float damage)
     {
         currentHealth -= damage;
@@ -28,13 +25,11 @@ public class AgentHealth : NetworkBehaviour
         }
     }
 
-    [TargetRpc]
     public void Target_DamageNotification(float damage)
     {
         Debug.Log("You just received " + damage + " damage!");
     }
 
-    [ClientRpc]
     public void Rpc_Heal(float health)
     {
         currentHealth += health;
@@ -45,13 +40,11 @@ public class AgentHealth : NetworkBehaviour
         print(currentHealth);
     }
 
-    [Command]
     public void Cmd_Kill()
     {
         Rpc_Kill();
     }
 
-    [ClientRpc]
     public void Rpc_Kill()
     {
         gameObject.SetActive(false);
