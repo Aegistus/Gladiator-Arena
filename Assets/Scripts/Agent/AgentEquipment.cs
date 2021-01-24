@@ -82,7 +82,7 @@ public class AgentEquipment : MonoBehaviour
         {
             CurrentStance = AnimationStance.OneHandedShield;
         }
-        // set all stance layers to 0 weight
+        // set all animation stance layers to 0 weight
         foreach (var stance in equipmentStanceLayers)
         {
             anim.SetLayerWeight(stance.Value, 0);
