@@ -11,6 +11,7 @@ public class Idling : OnGroundState
         animationHash = Animator.StringToHash("Idling");
         transitionsTo.Add(new Transition(typeof(Walking), Move, Not(Attacking)));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
+        transitionsTo.Add(new Transition(typeof(Rolling), Roll, Move));
     }
 
     public override void AfterExecution()
@@ -29,9 +30,6 @@ public class Idling : OnGroundState
 
     public override void DuringExecution()
     {
-        if (controller.LockTarget)
-        {
-            RotateAgentModelToDirection(movement.lookDirection.forward);
-        }
+        
     }
 }

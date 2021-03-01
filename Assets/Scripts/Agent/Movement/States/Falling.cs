@@ -22,9 +22,9 @@ public class Falling : MovementState
     public override void BeforeExecution()
     {
         Debug.Log("Falling");
+        startingVelocity = movement.velocity;
         anim.SetLayerWeight(fullBodyLayer, 1);
         anim.SetBool(animationHash, true);
-        startingVelocity = movement.velocity;
     }
 
     Vector3 newVelocity;

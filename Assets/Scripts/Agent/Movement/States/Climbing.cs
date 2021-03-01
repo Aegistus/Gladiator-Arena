@@ -27,7 +27,6 @@ public class Climbing : MovementState
         anim.SetBool(animationHash, false);
     }
 
-    RaycastHit rayHit;
     public override void BeforeExecution()
     {
         Debug.Log("Climbing");

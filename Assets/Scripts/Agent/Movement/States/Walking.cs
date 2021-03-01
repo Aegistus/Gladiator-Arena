@@ -14,6 +14,7 @@ public class Walking : OnGroundState
         transitionsTo.Add(new Transition(typeof(Idling), Not(Move)));
         transitionsTo.Add(new Transition(typeof(Running), Run));
         transitionsTo.Add(new Transition(typeof(Falling), Not(OnGround)));
+        transitionsTo.Add(new Transition(typeof(Rolling), Roll, Move));
     }
 
     public override void AfterExecution()
@@ -36,14 +37,7 @@ public class Walking : OnGroundState
     {
         inputVelocity = GetAgentMovementInput();
         movement.SetHorizontalVelocity(inputVelocity * moveSpeed);
-        if (controller.LockTarget)
-        {
-            RotateAgentModelToDirection(movement.lookDirection.forward);
-        }
-        else
-        {
-            RotateAgentModelToDirection(inputVelocity);
-        }
+        RotateAgentModelToDirection(inputVelocity);
         KeepGrounded();
     }
 

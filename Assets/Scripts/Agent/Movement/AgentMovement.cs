@@ -37,6 +37,7 @@ public class AgentMovement : MonoBehaviour
             {typeof(Climbing), new Climbing(gameObject) },
             {typeof(Vaulting), new Vaulting(gameObject) },
             {typeof(Sliding), new Sliding(gameObject) },
+            {typeof(Rolling), new Rolling(gameObject) },
         };
         StateMachine.SetStates(states, typeof(Idling));
     }

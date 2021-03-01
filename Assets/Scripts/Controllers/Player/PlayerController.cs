@@ -17,16 +17,9 @@ public class PlayerController : AgentController
         Run = Input.GetKey(KeyCode.LeftShift);
         Jump = Input.GetKey(KeyCode.Space);
         Crouch = Input.GetKey(KeyCode.LeftControl);
+        Roll = Input.GetKey(KeyCode.V);
         SwitchPrimary = Input.mouseScrollDelta.y < 0;
         SwitchSecondary = Input.mouseScrollDelta.y > 0;
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            LockTarget = !LockTarget;
-            if (LockTarget)
-            {
-                print("Locked");
-            }
-        }
         float xChange = Input.GetAxis("Mouse X");
         float yChange = Input.GetAxis("Mouse Y");
         float angle = Mathf.Rad2Deg * Mathf.Atan2(yChange, xChange);
@@ -41,12 +34,6 @@ public class PlayerController : AgentController
         else if (angle > -150 && angle < -30)
         {
             AttackDirection = AttackDirection.Stab;
-        }
-
-        // TEST
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            GetComponent<AgentCombat>().Cmd_Damage(gameObject, 10);
         }
     }
 }

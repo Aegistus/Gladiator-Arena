@@ -20,6 +20,7 @@ public abstract class MovementState : State
     public Func<bool> Jump => () => controller.Jump;
     public Func<bool> Run => () => controller.Run;
     public Func<bool> Crouch => () => controller.Crouch;
+    public Func<bool> Roll => () => controller.Roll;
     public Func<bool> OnGround => () => movement.IsGrounded();
     public Func<bool> NextToWall => () => IsNextToWall();
     public Func<bool> LedgeInReach => () => movement.ledgeDetector.CollidingWith == 0;
